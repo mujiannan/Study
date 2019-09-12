@@ -1,6 +1,6 @@
 global _start
 section .data
-	hello : db 'hello, world!\n'
+	hello : db 'hello world\n'
 section .text
 	_start:
 		mov	rax,1		;
