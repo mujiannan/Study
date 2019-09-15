@@ -5,7 +5,9 @@ int main()
 	int *originNums=NULL;
 	printf("originNums大小：%d *originNums大小：%d \n",sizeof(originNums),sizeof(*originNums));
 	printf("originNums地址：%p \n",originNums);
-	GetNums("./test.txt",1,&originNums);
+	int numsCount;
+	numsCount=GetNums("./test.txt",1,&originNums);
 	printf("main: %d \n",originNums[10]);
+	printf("I get the correct count: %d \n",numsCount);
 	return 0;
 }

@@ -2,18 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-void GetNums(char fullPath[255],int hasTitle,int **out)
+int GetNums(char fullPath[255],int hasTitle,int **out)
 {
 	printf("Here is GetNums.\n");
 	printf("out的大小：%d *out的大小：%d **out的大小：%d\n",sizeof(out),sizeof(*out),sizeof(**out));
 	FILE *fp=fopen(fullPath,"r");
-	char content[255];
+	char content[4095];
 	char title[255];
 	if(hasTitle>0)
 	{
 		fgets(title,255,(FILE*)fp);
 	}
-	fgets(content,255,(FILE*)fp);
+	fgets(content,4095,(FILE*)fp);
 	fclose(fp);
 	printf("%s%s \n",title,content);
 	int contentLength=strlen(content)-1;
@@ -66,4 +66,5 @@ void GetNums(char fullPath[255],int hasTitle,int **out)
 		printf("%d: %d \n",i,nums[i]);
 	}
 	*out=nums;
+	return sizeof(nums)/sizeof(int);
 }
