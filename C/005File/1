@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main()
+{
+	FILE *fp=fopen("./test.txt","r");
+	char buff[255];
+	fgets(buff,10,(FILE*)fp);
+	printf("输出%S",buff);
+	return 0;
+}
+
