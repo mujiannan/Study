@@ -6,8 +6,8 @@ int main()
 	int numsCount;
 	numsCount=GetNums("./test.txt",1,&originNums);
 	printf("数组长度：%d \n",numsCount);
-	extern void selection_sort();
-	selection_sort(originNums,numsCount,1);
+	extern void insertion_sort();
+	insertion_sort(originNums,numsCount,1);
 	int k;
 	for(k=0;k<numsCount;k++)
 	{
@@ -15,28 +15,27 @@ int main()
 	}
 	return 0;
 }
-void selection_sort(int arr[],int len,int order)
+void insertion_sort(int arr[],int len,int order)
 /*order>0,升序;order<=0，降序。*/
 {
 	if(order==0)
 	{
 		order=-1;
 	}
-	int i,j,bestPosition;
+	int i,j,tempNum;
 	extern void swap();
 	for(i=0;i<len;i++)
 	{
-		bestPosition=i;
+		tempNum=arr[i];
 		printf("当前位置： %d \n",i);
-		for(j=i+1;j<len;j++)
+		for(j=i;j>0;j--)
 		{
-			if((arr[bestPosition]-arr[j])*order>0)
+			if((arr[j-1]-arr[j])*order>0)
 			{
-				bestPosition=j;
-			printf("新的最小位置： %d \n",i);
+				swap(&arr[j-1],&arr[j]);
+				printf("两个位置交换：%d,%d \n",j-1,j);
 			}
 		}
-		swap(&arr[i],&arr[bestPosition]);
 	}	
 }
 void swap(int *a,int *b)
