@@ -22,11 +22,20 @@ void bubble_sort(int arr[],int len,int order)
 	{
 		order=-1;
 	}
-	int i,tempNum,swap;
+	int i,j,tempNum;
 	for(i=0;i<len;i++)
 	{
-		
-
+		for(j=i+1;j<len;j++)
+		{
+			if(order*(arr[i]-arr[j])>0)
+			{
+				printf("<交换前i:%d j:%d \n",arr[i],arr[j]);
+			 	tempNum=arr[i];
+				arr[i]=arr[j];
+				arr[j]=tempNum;
+				printf("交换后i:%d j:%d >\n",arr[i],arr[j]);
+			}
+		}
 	}	
 }
 

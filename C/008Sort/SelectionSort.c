@@ -22,20 +22,28 @@ void selection_sort(int arr[],int len,int order)
 	{
 		order=-1;
 	}
-	int i,j,tempNum;
+	int i,j,bestPosition;
 	for(i=0;i<len;i++)
 	{
+		bestPosition=i;
+		printf("当前位置： %d \n",i);
 		for(j=i+1;j<len;j++)
 		{
-			if(order*(arr[i]-arr[j])>0)
+			if((arr[bestPosition]-arr[j])*order>0)
 			{
-				printf("<交换前i:%d j:%d \n",arr[i],arr[j]);
-			 	tempNum=arr[i];
-				arr[i]=arr[j];
-				arr[j]=tempNum;
-				printf("交换后i:%d j:%d >\n",arr[i],arr[j]);
+				bestPosition=j;
+			printf("新的最小位置： %d \n",i);
 			}
 		}
+		extern void swap();
+		swap(&arr[i],&arr[bestPosition]);
 	}	
+}
+void swap(int *a,int *b)
+{
+	int tempNum;
+	tempNum=*b;
+	*b=*a;
+	*a=tempNum;
 }
 
