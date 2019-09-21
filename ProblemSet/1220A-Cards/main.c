@@ -2,12 +2,12 @@
 #include <string.h>
 int main()
 {
-	char source[]="nznooeeoer";
-	printf("source string: %s\n",source);
+	int n;
+	char source[n];
 	char defChars[]="nz";
 	int charCount[2]={0,0};
 	int i,j;
-	for(i=0;i<strlen(source);i++)
+	for(i=0;i<n;i++)
 	{
 		for(j=0;j<2;j++)
 		{
@@ -17,12 +17,18 @@ int main()
 			}
 		}
 	}
-	printf("Count each char:\n%s\n",defChars);
-	for(i=0;i<2;i++)
+	int result[charCount[0]+charCount[1]];
+	for(i=0;i<charCount[0];i++)
 	{
-		printf("%d",charCount[i]);
+		result[i]=1;
 	}
-	printf("\n");
-	
+	for(j=charCount[0];j<charCount[0]+charCount[1];j++)
+	{
+		result[j]=0;
+	}
+	for(i=0;i<charCount[0]+charCount[1];i++)
+	{
+		printf("%d ",result[i]);
+	}
 	return 0;
 }
