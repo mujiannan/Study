@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
-#define N 100001
 int main()
 {
 	int n;
-	char source[N];
-	scanf("%d %s",&n,source);
+	scanf("%d",&n);
+	char source[n];
+	scanf("%s",source);
 	char defChars[]="nz";
 	int charCount[2]={0,0};
 	int i,j;
