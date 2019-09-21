@@ -4,6 +4,7 @@ int main()
 {
 	int n;
 	char source[n];
+	scanf("%d %s",&n,source);
 	char defChars[]="nz";
 	int charCount[2]={0,0};
 	int i,j;
