@@ -8,13 +8,14 @@ int main(){
 	unsigned long source[n][n];
 	for(int i=0;i<n;i++){
 		for(int j=0;j<n;j++){
-			scanf("%llu",&source[i][j]);
-			/*printf("i=%d,j=%d,value=%llu\n",i,j,source[i][j]);*/
+			scanf("%lu",&source[i][j]);
+			/*printf("i=%d,j=%d,value=%d,value=%llu\n",i,j,source[i][j]);*/
+			
 		}
 	}
-	int result[n];
+	unsigned long result[n];
 	for(int i=1;i<n-1;i++){
-		/*printf("sqrt(%llu*%llu/%llu)=%llu\n",source[0][i+1],source[i][i+1],source[0][i],sqr(source[0][i+1]*source[i][i+1]/source[0][i]));*/
+		/*printf("sqrt(%lu*%lu/%lu)=%lu\n",source[0][i+1],source[i][i+1],source[0][i],sqr(source[0][i+1]*source[i][i+1]/source[0][i]));*/
 		result[i+1]=sqr(source[0][i+1]*source[i][i+1]/source[0][i]);
 	}
 	result[0]=source[0][n-1]/result[n-1];
