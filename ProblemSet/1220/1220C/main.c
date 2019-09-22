@@ -5,17 +5,17 @@ int main(){
 	scanf("%s",source);
 	printf("Mike\n");/*k=0, Mike win*/
 	int flagAnnWin;
-	char min=source[0];
+	int min=0;
 	for(int k=1;k<500001;k++){
 		if(source[k]=='\0'){
 			break;
 		}
 		flagAnnWin=0;
-		if(source[k]>=min){
+		if(source[k]>source[min]){
 			flagAnnWin=1;
 		}
 		else{
-			min=source[k];
+			min=k;
 		}
 		if(flagAnnWin==0){
 			printf("Mike\n");
