@@ -21,15 +21,15 @@ int main(){
 	result[0]=source[0][n-1]/result[n-1];
 	result[1]=source[0][1]/result[0];
 	for(int i=0;i<n;i++){
-		printf("%llu ",result[i]);
+		printf("%lu ",result[i]);
 	}
 	return 0;
 }
 unsigned long sqr(unsigned long x){
-	for(int i=0;i<x;i++){
-		if(i*i<=x&&i*(i+1)>x){
+	for(int i=0;i<=x;i++){
+		if(i*i==x){
 			return i;
 		}
 	}
-	return 1;
+	return 0;
 }
