@@ -68,5 +68,9 @@ namespace Study
         {
             Testers.MySqlTester.BuiltConnectionString(host: "13.88.14.236", user: "test", passWord: "test", port: 3306);
         }
+        private static void TestLinq()
+        {
+            Testers.LinqTester.TestAsync();
+        }
     }
 }
