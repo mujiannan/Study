@@ -57,7 +57,7 @@ namespace Study
         }
         private static void TestMySql()
         {
-            Testers.MySqlTester.LogIn(host :"13.88.14.236", user:"test", passWord: "test", port: 3306);
+            Testers.MySqlTester.LogIn(host :"blog.mujiannan.me", user:"Blog", passWord: "198514", port: 3306);
         }
         private static void TestException()
         {
@@ -66,7 +66,7 @@ namespace Study
         }
         private static void TestBuildMysqlString()
         {
-            Testers.MySqlTester.BuiltConnectionString(host: "13.88.14.236", user: "test", passWord: "test", port: 3306);
+            Testers.MySqlTester.BuiltConnectionString(host: "blog.mujiannan.me", user: "BlogAdmin", passWord: "198514", port: 3306);
         }
         private static void TestLinq()
         {

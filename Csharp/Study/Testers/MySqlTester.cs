@@ -15,7 +15,7 @@ namespace Study.Testers
     {
         public static void LogIn(string host,string user,string passWord,uint port=3306)
         {
-            MySqlConnection mySqlConnection = new MySqlConnection($"server={host};port={port};user id={user};password={passWord}");
+            MySqlConnection mySqlConnection = new MySqlConnection($"server={host};port={port};Username={user};Password={passWord}");
             try
             {
                 mySqlConnection.Open();
@@ -25,7 +25,8 @@ namespace Study.Testers
             {
                 WriteLine(Ex.Message);
             }
-            MySqlCommand mySqlCommand = new MySqlCommand("Show databases;", mySqlConnection);
+            Console.WriteLine(mySqlConnection.State);
+            MySqlCommand mySqlCommand = new MySqlCommand("Select Current_TimeStamp;", mySqlConnection);
             MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
             int i = 0;
             while (mySqlDataReader.Read())
