@@ -3,7 +3,7 @@ int main()
 {
 	extern int GetNums();
 	int *originNums=NULL;
-	printf("originNums大小：%d *originNums大小：%d \n",sizeof(originNums),sizeof(*originNums));
+	printf("originNums大小：%ld *originNums大小：%ld \n",sizeof(originNums),sizeof(*originNums));
 	printf("originNums地址：%p \n",originNums);
 	int numsCount;
 	numsCount=GetNums("./test.txt",1,&originNums);

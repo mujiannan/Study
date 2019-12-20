@@ -5,7 +5,7 @@
 int GetNums(char fullPath[255],int hasTitle,int **out)
 {
 	printf("Here is GetNums.\n");
-	printf("out的大小：%d *out的大小：%d **out的大小：%d\n",sizeof(out),sizeof(*out),sizeof(**out));
+	printf("out的大小：%ld *out的大小：%ld **out的大小：%ld\n",sizeof(out),sizeof(*out),sizeof(**out));
 	FILE *fp=fopen(fullPath,"r");
 	char content[4095];
 	char title[255];
@@ -33,9 +33,9 @@ int GetNums(char fullPath[255],int hasTitle,int **out)
 		printf("*out为空 \n");
 	}
 	*out=(int *)malloc(n*sizeof(int));
-	printf("size of nums: %d \n",sizeof(nums));
+	printf("size of nums: %ld \n",sizeof(nums));
 	printf("*out地址：%p \n",*out);
-	printf("out的大小：%d *out的大小：%d **out的大小：%d\n",sizeof(out),sizeof(*out),sizeof(**out));
+	printf("out的大小：%ld *out的大小：%ld **out的大小：%ld\n",sizeof(out),sizeof(*out),sizeof(**out));
 	t=0;
 	a=0;
 	b=1;

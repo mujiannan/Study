@@ -22,11 +22,10 @@ void insertion_sort(int arr[],int len,int order)
 	{
 		order=-1;
 	}
-	int i,j,tempNum;
+	int i,j;
 	extern void swap();
 	for(i=0;i<len;i++)
 	{
-		tempNum=arr[i];
 		printf("当前位置： %d \n",i);
 		for(j=i;j>0;j--)
 		{
