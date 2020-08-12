@@ -2,29 +2,43 @@
 html,body{
     height:100vh;
     width:100vw;
-    margin:0px;
-    font-size: 0px;
-    overflow:hidden;
+    padding:0px;
+    font-size:0px;
+    line-height: 0px;
 }
 
-body.jmsy-bs-mainpage{
-    background-image: url(../img/background02.png);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-.jmsy-bs-title-container{
+div.echarts-container{
+    height:100%;
     width:100%;
-    height:5%;
+    position:absolute;
+}
+#jmsy-bs-mainpage-body{
+    margin:0px;
+    background-image: url(../img/background02.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+#jmsy-bs-mainpage-container{
+    width:100%;
+    height:100%;
+    margin:0px;  
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-color: rgba(0,255,255,0.15);
+    position: absolute;
+}
+.jmsy-bs-title-container{
     text-align: center;
+    top:0px;
+    position: relative;
+    width:100%;
 }
 
-text.jmsy-bs-title{
+p.jmsy-bs-title{
     font-size: 28px;
     color: snow;
-    position: relative;
-    top:10%;
 }
 
 #jmsy-bs-mainpage-content-container{
@@ -38,10 +52,41 @@ text.jmsy-bs-title{
 
 div.jmsy-bs-content-card{
     font-size: 0px;
-    background-image:linear-gradient(rgba(1,4,19,0),rgba(40,50,60,0.6));
+    background-image:linear-gradient(to bottom,rgba(1,4,19,0.1),rgba(40,50,60,0.01));
     background-size:100%;
     margin:5px 2px;
-    border-style: groove;
-    border-radius:5px;
-    border-color:rgba(18,88,212,1);
+    position: relative;
 }
+p.jmsy-bs-content-card-title{
+    font-size: 18px;
+    color: #216eff;
+    font-weight:bold;
+    margin:10px 0px 0px 20px;
+    position: absolute;
+}
+
+div.jmsy-bs-content-card > span {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+    }
+div.jmsy-bs-content-card > span.top-left { 
+       border-top: 2px solid #216eff;
+       border-left: 2px solid #216eff;
+   }
+div.jmsy-bs-content-card > span.top-right {
+       right: 0;
+       border-top: 2px solid #216eff;
+       border-right: 2px solid #216eff;
+   }
+div.jmsy-bs-content-card > span.bottom-left {
+       bottom: 0;
+       border-left: 2px solid #216eff;
+       border-bottom: 2px solid #216eff;
+   }
+div.jmsy-bs-content-card > span.bottom-right {
+       right: 0;
+       bottom:0;
+       border-right: 2px solid #216eff;
+       border-bottom: 2px solid #216eff;
+   }
