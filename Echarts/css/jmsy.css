@@ -1,0 +1,47 @@
+
+html,body{
+    height:100vh;
+    width:100vw;
+    margin:0px;
+    font-size: 0px;
+    overflow:hidden;
+}
+
+body.jmsy-bs-mainpage{
+    background-image: url(../img/background02.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.jmsy-bs-title-container{
+    width:100%;
+    height:5%;
+    text-align: center;
+}
+
+text.jmsy-bs-title{
+    font-size: 28px;
+    color: snow;
+    position: relative;
+    top:10%;
+}
+
+#jmsy-bs-mainpage-content-container{
+    margin:0px;
+    border-radius: 0%;
+    font-size:0px;
+    display: inline-block;
+    height: 90%;
+    width: 100%;
+}
+
+div.jmsy-bs-content-card{
+    font-size: 0px;
+    background-image:linear-gradient(rgba(1,4,19,0),rgba(40,50,60,0.6));
+    background-size:100%;
+    margin:5px 2px;
+    border-style: groove;
+    border-radius:5px;
+    border-color:rgba(18,88,212,1);
+}
