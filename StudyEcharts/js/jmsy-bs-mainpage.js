@@ -571,24 +571,75 @@ function drawMainPageMap() {
 }
 
 function drawMainPageVippopularity(){
-    var shops=["店铺1","店铺2","店铺3","店铺4","店铺5"];
-    var billsCount=[8985,7659,6543,4453,4324];
-    shops.reverse();
-    billsCount.reverse();
+    var shops=["店铺A","店铺B","店铺C","店铺D","店铺E"];
+    var billsCount=[7659,4453,8985,6543,4324];
+    shopsData=[];
+    for(i=0;i<shops.length;i++){
+        shopsData.push({
+            name:shops[i],
+            billsCount:billsCount[i]
+        });
+    }
+    shopsData.sort((a,b)=>{
+        if(a.billsCount>b.billsCount){
+            return 1;
+        }else{
+            return -1;
+        }
+    });
+    shops=[];
+    billsCount=[];
+    for(i=0;i<shopsData.length;i++){
+        shops.push((shopsData.length-i)+"."+shopsData[i].name);
+        billsCount.push(shopsData[i].billsCount);
+    };
     option={
         xAxis:{
             type:"value",
+            show:false,
+            axisLine:{
+                show:false
+            },
+            axisLine:{
+                show:false
+            },
+            grid:{
+                show:false
+            },
+            splitLine:{
+                show:false
+            },
+            splitArea:{
+                show:false
+            }
         },
+
         yAxis:{
             type:"category",
             axisLabel:{
+                show:true,
                 color:"snow"
             },
-            data:shops
+            data:shops,
+            axisLine:{
+                show:false
+            }
         },
+        
         series:[{
             type:"bar",
-            data:billsCount
+            data:billsCount,
+            itemStyle:{
+                normal:{
+                    color:new echarts.graphic.LinearGradient(0,0,1,0,[{
+                        offset:0,
+                        color:"#01FFD1"
+                    },{
+                        offset:1,
+                        color:"#01837A"
+                    }])
+                }
+            }
         }]
     };
     var vipPopularity_container=document.getElementById("jmsy-bs-mainpage-vippopularity");

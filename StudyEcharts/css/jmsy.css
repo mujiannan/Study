@@ -26,7 +26,7 @@ div.echarts-container{
     margin:0px;  
     background-attachment: fixed;
     background-size: 100% 100%;
-    background-color: rgba(0,255,255,0.15);
+    background-color: rgba(10,90,255,0.05);
     position: absolute;
 }
 .jmsy-bs-title-container{
@@ -52,9 +52,9 @@ p.jmsy-bs-title{
 
 div.jmsy-bs-content-card{
     font-size: 0px;
-    background-image:linear-gradient(to bottom,rgba(1,4,19,0.1),rgba(40,50,60,0.01));
+    background-image:linear-gradient(to bottom,rgba(1,4,19,0.3),rgba(40,50,180,0.1));
     background-size:100%;
-    margin:5px 2px;
+    margin:5px 5px 10px;
     position: relative;
 }
 p.jmsy-bs-content-card-title{
