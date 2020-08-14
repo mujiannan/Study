@@ -569,23 +569,31 @@ function drawMainPageMap() {
 
     china_chart.setOption(option);
 }
+drawMainPageMap();
 
 function drawMainPageVippopularity(){
-    var shops=["店铺A","店铺B","店铺C","店铺D","店铺E"];
-    var billsCount=[7659,4453,8985,6543,4324];
+    var shops=['伊米妮','九客便利','众乐琴行','超捷','优瑞亲子游泳','传骑马术','佐敦扎记港式茶餐厅','佐梵雅','佐治牛仔','佰邦服饰'];
+    var billsCount=[7659,4453,8985,6543,4324,6989,2309,10978,8977,3289];
     shopsData=[];
+
+    //把名字太长的改成5个字...
+    for(i=0;i<shops.length;i++){
+        if(shops[i].length>5){
+            shops[i]=shops[i].substring(0,4)+"...";
+        };
+    };
     for(i=0;i<shops.length;i++){
         shopsData.push({
             name:shops[i],
             billsCount:billsCount[i]
         });
-    }
+    };
     shopsData.sort((a,b)=>{
         if(a.billsCount>b.billsCount){
             return 1;
         }else{
             return -1;
-        }
+        };
     });
     shops=[];
     billsCount=[];
@@ -594,6 +602,12 @@ function drawMainPageVippopularity(){
         billsCount.push(shopsData[i].billsCount);
     };
     option={
+        grid:{
+            show:false,
+            top:40,
+            left:"100",
+            bottom:"5%",
+       },
         xAxis:{
             type:"value",
             show:false,
@@ -616,12 +630,28 @@ function drawMainPageVippopularity(){
 
         yAxis:{
             type:"category",
+            data:shops,
             axisLabel:{
                 show:true,
-                color:"snow"
+                interval:0,
+                color:"snow",
+                fontSize:12,
+                align:'left',
+                margin:80
             },
-            data:shops,
             axisLine:{
+                show:false
+            },
+            axisTick:{
+                show:false
+            },
+            grid:{
+                show:false
+            },
+            splitLine:{
+                show:false
+            },
+            splitArea:{
                 show:false
             }
         },
@@ -629,14 +659,18 @@ function drawMainPageVippopularity(){
         series:[{
             type:"bar",
             data:billsCount,
+            label:{
+                show:false
+            },
+            barCategoryGap:"50%",
             itemStyle:{
                 normal:{
                     color:new echarts.graphic.LinearGradient(0,0,1,0,[{
                         offset:0,
-                        color:"#01FFD1"
+                        color:"#01837Aa0"
                     },{
                         offset:1,
-                        color:"#01837A"
+                        color:"#01FFD1a0"
                     }])
                 }
             }
@@ -649,4 +683,30 @@ function drawMainPageVippopularity(){
 }
 drawMainPageVippopularity();
 
-drawMainPageMap();
+function drawMainPageBrands(){
+    var container=document.getElementById("jmsy-bs-mainpage-brands");
+    brandsCount=20;//确保是偶数
+    brandsCount=2*parseInt(brandsCount/2);
+    var brands_logo_url=['http://img3.winshang.com/Upload/brand/logo/2017/11/21/131557178203281020.jpg','http://yst.winshang.com/member/PinPai/2011/5/30/20115302247269846631_1.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/18/131527809940217752.jpg','http://yst.winshang.com/member/PinPai/2013/7/10/20137101053211402641_1.gif','http://img3.winshang.com/Upload/brand/logo/2017/12/19/131581451539724417.jpg','http://img3.winshang.com/Upload/brand/logo/2017/12/15/131577976674743721.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/19/131528799680148784.jpg','http://img3.winshang.com/Upload/brand/logo/2017/11/28/131563344420248405.jpg','http://img3.winshang.com/Upload/brand/logo/2017/12/19/131581264133017531.jpg','http://img3.winshang.com/Upload/brand/logo/2018/9/11/131811060504024298.jpg','http://img3.winshang.com/Upload/brand/logo/2019/5/6/132016054818604462.png','http://img3.winshang.com/Upload/brand/logo/2017/10/13/131523350865915985.jpg','http://img3.winshang.com/Upload/brand/logo/2018/4/17/131684295598297770.jpg','http://img3.winshang.com/Upload/brand/logo/2018/6/28/131746495039504580.png','http://img3.winshang.com/Upload/brand/logo/2017/11/27/131562462955691818.jpg','http://img3.winshang.com/Upload/brand/logo/2019/10/31/132169773969467090.png','http://img3.winshang.com/Upload/brand/logo/2019/4/24/132005730051166545.jpg','http://img3.winshang.com/Upload/brand/logo/2017/8/15/131472398716203089.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/11/131521784680107927.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/27/131535581465733330.jpg'
+                        ];
+    for(i=0;i<2;i++){
+        rowContainer=document.createElement('div');
+        rowContainer.setAttribute('class','brands-row-container');
+        rowContainer.setAttribute('id','brands-row-container'+i);
+        rowContainer.setAttribute("style","height:50%;")
+        for(j=0;j<brandsCount/2;j++){
+            unit_num=brandsCount/2*i+j;
+            columnContainer=document.createElement('div');
+            columnContainer.setAttribute('class','brands-column-container');
+            columnContainer.setAttribute('id','brands-column-container'+unit_num);
+            columnContainer.setAttribute("style","width:"+(200/brandsCount)+"%;");
+            logo=document.createElement('img');
+            logo.setAttribute("class","brand-logo");
+            logo.setAttribute("src",brands_logo_url[unit_num]);
+            columnContainer.appendChild(logo);
+            rowContainer.appendChild(columnContainer);
+        };
+        container.appendChild(rowContainer);
+    };
+}
+drawMainPageBrands();

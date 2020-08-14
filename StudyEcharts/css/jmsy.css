@@ -90,3 +90,23 @@ div.jmsy-bs-content-card > span.bottom-right {
        border-right: 2px solid #216eff;
        border-bottom: 2px solid #216eff;
    }
+
+#jmsy-bs-mainpage-brands{
+    position:absolute;
+    margin:40px 10px 10px 10px;
+    height:calc(100% - 50px);
+    width:calc(100% - 20px);
+}
+div.brands-row-container{
+    width:100%;
+}
+
+div.brands-column-container{
+    height:100%;
+    display:inline-block;
+}
+
+img.brand-logo{
+    height:80%;
+    width:80%;
+}
