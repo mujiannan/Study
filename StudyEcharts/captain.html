@@ -14,40 +14,154 @@
 
 <body id="jmsy-bs-mainpage-body">
     <div id='jmsy-bs-mainpage-container'>
+
+        <!-- 标题 -->
         <div class='jmsy-bs-title-container'>
             <p class='jmsy-bs-title'>金茂商业经营分析驾驶舱</p>
         </div>
+
+        <!-- 主体内容 -->
         <div id="jmsy-bs-mainpage-content-container" class="jmsy-bs-frame">
+
+            <!-- 一、左栏 -->
             <div id="jmsy-bs-mainpage-left" style="display:inline-block; width:25%;height:100%;">
+
+                <!-- 1. 城市天气 -->
                 <div id="jmsy-bs-mainpage-weather" class="jmsy-bs-content-card" style="height:25%;">
                     <p class="jmsy-bs-content-card-title">城市天气</p>
                 </div>
+
+                <!-- 2. 开铺率 -->
                 <div class="jmsy-bs-content-card" style="height:20%;">
                     <p class="jmsy-bs-content-card-title">开铺率</p>
                     <div id="jmsy-bs-mainpage-openingrate" class="echarts-container" style="bottom: 0px;"></div>
                 </div>
+
+                <!-- 3. 活动日历 -->
                 <div id="jmsy-bs-mainpage-activities" class="jmsy-bs-content-card" style="height:calc(55% - 20px);">
                     <p class="jmsy-bs-content-card-title">活动日历</p>
                 </div>
             </div>
-            <div id="jmsy-bs-mainpage-center" style="display: inline-block; width:50%;height:100%;">
+
+            <!-- 二、中栏 -->
+            <div id="jmsy-bs-mainpage-center" style="display: inline-block; width:55%;height:100%;">
+
+                <!-- 1. 地图 -->
                 <div id="jmsy-bs-mainpage-map" style="height:80%;">
 
                 </div>
 
+                <!-- 1. 签约品牌 -->
                 <div class="jmsy-bs-content-card" style="height:20%">
                     <p class="jmsy-bs-content-card-title">签约品牌</p>
                     <div id="jmsy-bs-mainpage-brands"></div>
                 </div>
             </div>
-            <div id="jmsy-bs-mainpage-right" style="display: inline-block; width:25%;height:100%;">
-                <div class="jmsy-bs-content-card" style="height:15%;">
+
+            <!-- 三、右栏 -->
+            <div id="jmsy-bs-mainpage-right" style="display: inline-block; width:20%;height:100%;">
+
+                <!-- 1. 今日客流 -->
+                <div class="jmsy-bs-content-card" style="height:20%;">
                     <p class="jmsy-bs-content-card-title">今日客流</p>
+                    <p id="jmsy-bs-mainpage-personflow-updateat">
+                        更新时间：2020年8月14日13点30分
+                    </p>
+                    <div class="echarts-container" style="margin-top:60px;margin-left:20px;height:calc(100% - 60px);">
+                        <div>
+                            <div style="color:snow;display:inline-block;text-align:left;width:40%;">
+                                <p style="font-size:13px;">在营店铺</p>
+                                <div style="position: relative;color:#00FFD0;">
+                                    <p class="jmsy-bs-mainpage-kpi-big">321</p>
+                                    <p style="font-size:14px;display: inline-block;">&nbsp&nbsp个</p>
+                                </div>
+                            </div>
+                            <div style="color:snow;display:inline-block;text-align:left;width:60%;">
+                                <p style="font-size:13px;">客流</p>
+                                <div style="position: relative;color:#00FFD0;">
+                                    <p class="jmsy-bs-mainpage-kpi-big">123621</p>
+                                    <p style="font-size:14px;display: inline-block;">&nbsp&nbsp人次</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="position: relative;">
+                            <div style="display:inline-block;text-align:left;width:40%;height:100%;">
+                                <p style="font-size:14px;color:snow;display: inline-block;">新增会员&nbsp</p>
+                                <p class='jmsy-bs-mainpage-kpi-small'>1030</p>
+                                <p class='jmsy-bs-mainpage-kpi-small' style="font-size:12px;">&nbsp&nbsp人</p>
+                            </div>
+                            <div style="display:inline-block;text-align:left;width:60%;height:100%;">
+                                <p style="font-size:14px;color:snow;display: inline-block;">会员消费&nbsp</p>
+                                <p class='jmsy-bs-mainpage-kpi-small'>652130</p>
+                                <p class='jmsy-bs-mainpage-kpi-small' style="font-size:12px;">&nbsp&nbsp元</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="jmsy-bs-content-card" style="height:50%;">
+
+                <!-- 2. 会员画像 -->
+                <div class="jmsy-bs-content-card" style="height:45%; ">
                     <p class="jmsy-bs-content-card-title">会员画像</p>
+                    <div style="position: absolute;top:40px;width:100%;height:calc(100% - 40px);">
+                        <div style="width:100%;height:20%;position: relative;;">
+                            <div style="width:100%;height:100%;position: relative;margin-left:20px;">
+                                <!-- 左侧，存量会员数 -->
+                                <div style="display: inline-block;width:50%;height:100%;">
+                                    <div style="color:snow;display:inline-block;text-align:left;width:100%;">
+                                        <p style="font-size:13px;">存量会员</p>
+                                        <div style="position: relative;color:#00FFD0;">
+                                            <p class="jmsy-bs-mainpage-kpi-big">213621</p>
+                                            <p style="font-size:14px;display: inline-block;">&nbsp&nbsp个</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 右侧，客单价与人均消费次数 -->
+                                <div style="display: inline-block;width:50%;height:100%;">
+                                    <div style="text-align:left;width:100%;height:50%;">
+                                        <div style="width:100px;height:100%;display: inline-block;">
+                                            <p style="font-size:14px;color:snow;display: inline-block;">客单价&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                                        </div>
+                                        <div style="width:calc(100% - 160px);height:100%;text-align: right;display: inline-block;">
+                                            <p class='jmsy-bs-mainpage-kpi-small'>120</p>
+                                        </div>
+                                        <div style="width:60px;height:100%;display: inline-block;">
+                                            <p class='jmsy-bs-mainpage-kpi-small' style="font-size:12px;">&nbsp&nbsp元</p>
+                                        </div>
+                                    </div>
+                                    <div style="text-align:left;width:100%;height:50%;">
+                                        <div style="width:100px;height:100%;display: inline-block;">
+                                            <p style="font-size:14px;color:snow;display: inline-block;">人均消费数&nbsp&nbsp&nbsp</p>
+                                        </div>
+                                        <div style="width:calc(100% - 160px);height:100%;text-align: right;display: inline-block;">
+                                            <p class='jmsy-bs-mainpage-kpi-small'>1.3</p>
+                                        </div>
+                                        <div style="width:60px;height:100%;display: inline-block;">
+                                            <p class='jmsy-bs-mainpage-kpi-small' style="font-size:12px;">&nbsp&nbsp次</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 中段，玫瑰图与柱状图 -->
+                        <div style="position: relative;height:40%;width:100%;">
+                            <div class="echarts-container" style="width:50%;display: inline-block;">
+                                <div id="jmsy-bs-mainpage-viprosechart" class="echarts-container"></div>
+                            </div>
+                            <div class="echarts-container" style="width:50%;display: inline-block;"></div>
+                        </div>
+
+                        <!-- 下段，年龄 -->
+                        <div style="position: relative;height:40%;width:100%;"></div>
+                    </div>
+                    <!-- 上段，kpi -->
+
+
                 </div>
-                <div class="jmsy-bs-content-card" style="height:calc(35% - 20px);">
+
+                <!-- 3. 会员偏好排行 -->
+                <div class="jmsy-bs-content-card" style="height:calc(35% - 20px); ">
                     <p class="jmsy-bs-content-card-title">会员偏好排行</p>
                     <div id="jmsy-bs-mainpage-vippopularity" class="echarts-container"></div>
                 </div>
@@ -56,7 +170,7 @@
     </div>
 
 
-    <script src="js/jmsy-bs-mainpage.js"></script>
+    <script src="js/jmsy-bs-mainpage.js "></script>
 </body>
 
 </html>

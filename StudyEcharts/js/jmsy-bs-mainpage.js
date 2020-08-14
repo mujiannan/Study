@@ -20,63 +20,64 @@ function drawOpeningRate() {
 
     for (i = 0; i < projects.length; i++) {
         gauge_container = document.createElement('div');
-        gauge_container.setAttribute("class","openingrate-gauge-container");
+        gauge_container.setAttribute("class", "openingrate-gauge-container");
         gauge_container.setAttribute("style", "display:inline-block;height:100%;width:" + (100 / projects.length) + "%;");
         gauges_container.appendChild(gauge_container);
         gauge = document.createElement('div');
-        gauge.setAttribute("class","openingrate-gauge");
+        gauge.setAttribute("class", "openingrate-gauge");
         gauge.setAttribute("style", "display:inline-block;height:100%;width:100%;");
         gauge_container.appendChild(gauge);
         option = {
-            series: [
-                {
-                    name: "开铺率",
-                    type: "gauge",
-                    startAngle:90,
-                    endAngle:-269,
-                    splitNumber:2,
-                    axisLine:{
-                        show:true,
-                        lineStyle:{
-                            color:[[data[i],"#be967c"],[1,"#343d5a"]],
-                            width:10
-                        }
-                    },
-                    pointer:{
-                        show:false
-                    },
-                    splitLine:{
-                        show:false
-                    },
-                    axisTick:{
-                        show:false
-                    },
-                    axisLabel:{
-                        show:false
-                    },
-                    center:["50%","50%"],
-                    min: 0,
-                    max: 100,
-                    title:{
-                        show:true,
-                        offsetCenter:[0,"150%"],
-                        color:"#be967c",
-                        fontSize:16
-                    },
-                    detail: {
-                        show:true,
-                        offsetCenter:["0%","0%"],
-                        fontSize:20,
-                        color:"#be967c",
-                        formatter: "{value}%"
-                    },
-                    data: [{ value: Math.round(100*data[i]),name:projects[i].substring(0,2) }]
-                }
-            ]
+            series: [{
+                name: "开铺率",
+                type: "gauge",
+                startAngle: 90,
+                endAngle: -269,
+                splitNumber: 2,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: [
+                            [data[i], "#be967c"],
+                            [1, "#343d5a"]
+                        ],
+                        width: 10
+                    }
+                },
+                pointer: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                },
+                center: ["50%", "50%"],
+                min: 0,
+                max: 100,
+                title: {
+                    show: true,
+                    offsetCenter: [0, "150%"],
+                    color: "#be967c",
+                    fontSize: 16
+                },
+                detail: {
+                    show: true,
+                    offsetCenter: ["0%", "0%"],
+                    fontSize: 20,
+                    color: "#be967c",
+                    formatter: "{value}%"
+                },
+                data: [{ value: Math.round(100 * data[i]), name: projects[i].substring(0, 2) }]
+            }]
         };
         openingrate_chart = echarts.init(gauge);
         openingrate_chart.setOption(option);
-        
+
     };
 }
 drawOpeningRate();
@@ -468,7 +469,7 @@ function drawMainPageMap() {
         '大庆': [125.03, 46.58]
     };
 
-    var convertData = function (data) {
+    var convertData = function(data) {
         var res = [];
         for (var i = 0; i < data.length; i++) {
             var geoCoord = geoCoordMap[data[i].name];
@@ -508,13 +509,12 @@ function drawMainPageMap() {
                 }
             }
         },
-        series: [
-            {
+        series: [{
                 name: 'pm2.5',
                 type: 'scatter',
                 coordinateSystem: 'geo',
                 data: convertData(data),
-                symbolSize: function (val) {
+                symbolSize: function(val) {
                     return val[2] / 10;
                 },
                 label: {
@@ -537,10 +537,10 @@ function drawMainPageMap() {
                 name: 'Top 5',
                 type: 'effectScatter',
                 coordinateSystem: 'geo',
-                data: convertData(data.sort(function (a, b) {
+                data: convertData(data.sort(function(a, b) {
                     return b.value - a.value;
                 }).slice(0, 6)),
-                symbolSize: function (val) {
+                symbolSize: function(val) {
                     return val[2] / 10;
                 },
                 showEffectOn: 'render',
@@ -571,138 +571,137 @@ function drawMainPageMap() {
 }
 drawMainPageMap();
 
-function drawMainPageVippopularity(){
-    var shops=['伊米妮','九客便利','众乐琴行','超捷','优瑞亲子游泳','传骑马术','佐敦扎记港式茶餐厅','佐梵雅','佐治牛仔','佰邦服饰'];
-    var billsCount=[7659,4453,8985,6543,4324,6989,2309,10978,8977,3289];
-    shopsData=[];
+function drawMainPageVippopularity() {
+    var shops = ['伊米妮', '九客便利', '众乐琴行', '超捷', '优瑞亲子游泳', '传骑马术', '佐敦扎记港式茶餐厅', '佐梵雅', '佐治牛仔', '佰邦服饰'];
+    var billsCount = [7659, 4453, 8985, 6543, 4324, 6989, 2309, 10978, 8977, 3289];
+    shopsData = [];
 
     //把名字太长的改成5个字...
-    for(i=0;i<shops.length;i++){
-        if(shops[i].length>5){
-            shops[i]=shops[i].substring(0,4)+"...";
+    for (i = 0; i < shops.length; i++) {
+        if (shops[i].length > 5) {
+            shops[i] = shops[i].substring(0, 4) + "...";
         };
     };
-    for(i=0;i<shops.length;i++){
+    for (i = 0; i < shops.length; i++) {
         shopsData.push({
-            name:shops[i],
-            billsCount:billsCount[i]
+            name: shops[i],
+            billsCount: billsCount[i]
         });
     };
-    shopsData.sort((a,b)=>{
-        if(a.billsCount>b.billsCount){
+    shopsData.sort((a, b) => {
+        if (a.billsCount > b.billsCount) {
             return 1;
-        }else{
+        } else {
             return -1;
         };
     });
-    shops=[];
-    billsCount=[];
-    for(i=0;i<shopsData.length;i++){
-        shops.push((shopsData.length-i)+"."+shopsData[i].name);
+    shops = [];
+    billsCount = [];
+    for (i = 0; i < shopsData.length; i++) {
+        shops.push((shopsData.length - i) + "." + shopsData[i].name);
         billsCount.push(shopsData[i].billsCount);
     };
-    option={
-        grid:{
-            show:false,
-            top:40,
-            left:"100",
-            bottom:"5%",
-       },
-        xAxis:{
-            type:"value",
-            show:false,
-            axisLine:{
-                show:false
+    option = {
+        grid: {
+            show: false,
+            top: 40,
+            left: "100",
+            bottom: "5%",
+        },
+        xAxis: {
+            type: "value",
+            show: false,
+            axisLine: {
+                show: false
             },
-            axisLine:{
-                show:false
+            axisLine: {
+                show: false
             },
-            grid:{
-                show:false
+            grid: {
+                show: false
             },
-            splitLine:{
-                show:false
+            splitLine: {
+                show: false
             },
-            splitArea:{
-                show:false
+            splitArea: {
+                show: false
             }
         },
 
-        yAxis:{
-            type:"category",
-            data:shops,
-            axisLabel:{
-                show:true,
-                interval:0,
-                color:"snow",
-                fontSize:12,
-                align:'left',
-                margin:80
+        yAxis: {
+            type: "category",
+            data: shops,
+            axisLabel: {
+                show: true,
+                interval: 0,
+                color: "snow",
+                fontSize: 12,
+                align: 'left',
+                margin: 80
             },
-            axisLine:{
-                show:false
+            axisLine: {
+                show: false
             },
-            axisTick:{
-                show:false
+            axisTick: {
+                show: false
             },
-            grid:{
-                show:false
+            grid: {
+                show: false
             },
-            splitLine:{
-                show:false
+            splitLine: {
+                show: false
             },
-            splitArea:{
-                show:false
+            splitArea: {
+                show: false
             }
         },
-        
-        series:[{
-            type:"bar",
-            data:billsCount,
-            label:{
-                show:false
+
+        series: [{
+            type: "bar",
+            data: billsCount,
+            label: {
+                show: false
             },
-            barCategoryGap:"50%",
-            itemStyle:{
-                normal:{
-                    color:new echarts.graphic.LinearGradient(0,0,1,0,[{
-                        offset:0,
-                        color:"#01837Aa0"
-                    },{
-                        offset:1,
-                        color:"#01FFD1a0"
+            barCategoryGap: "50%",
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0,
+                        color: "#01837Aa0"
+                    }, {
+                        offset: 1,
+                        color: "#01FFD1a0"
                     }])
                 }
             }
         }]
     };
-    var vipPopularity_container=document.getElementById("jmsy-bs-mainpage-vippopularity");
+    var vipPopularity_container = document.getElementById("jmsy-bs-mainpage-vippopularity");
     console.debug(vipPopularity_container);
-    vipPopularity_chart=echarts.init(vipPopularity_container,"jmsy");
+    vipPopularity_chart = echarts.init(vipPopularity_container, "jmsy");
     vipPopularity_chart.setOption(option);
 }
 drawMainPageVippopularity();
 
-function drawMainPageBrands(){
-    var container=document.getElementById("jmsy-bs-mainpage-brands");
-    brandsCount=20;//确保是偶数
-    brandsCount=2*parseInt(brandsCount/2);
-    var brands_logo_url=['http://img3.winshang.com/Upload/brand/logo/2017/11/21/131557178203281020.jpg','http://yst.winshang.com/member/PinPai/2011/5/30/20115302247269846631_1.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/18/131527809940217752.jpg','http://yst.winshang.com/member/PinPai/2013/7/10/20137101053211402641_1.gif','http://img3.winshang.com/Upload/brand/logo/2017/12/19/131581451539724417.jpg','http://img3.winshang.com/Upload/brand/logo/2017/12/15/131577976674743721.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/19/131528799680148784.jpg','http://img3.winshang.com/Upload/brand/logo/2017/11/28/131563344420248405.jpg','http://img3.winshang.com/Upload/brand/logo/2017/12/19/131581264133017531.jpg','http://img3.winshang.com/Upload/brand/logo/2018/9/11/131811060504024298.jpg','http://img3.winshang.com/Upload/brand/logo/2019/5/6/132016054818604462.png','http://img3.winshang.com/Upload/brand/logo/2017/10/13/131523350865915985.jpg','http://img3.winshang.com/Upload/brand/logo/2018/4/17/131684295598297770.jpg','http://img3.winshang.com/Upload/brand/logo/2018/6/28/131746495039504580.png','http://img3.winshang.com/Upload/brand/logo/2017/11/27/131562462955691818.jpg','http://img3.winshang.com/Upload/brand/logo/2019/10/31/132169773969467090.png','http://img3.winshang.com/Upload/brand/logo/2019/4/24/132005730051166545.jpg','http://img3.winshang.com/Upload/brand/logo/2017/8/15/131472398716203089.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/11/131521784680107927.jpg','http://img3.winshang.com/Upload/brand/logo/2017/10/27/131535581465733330.jpg'
-                        ];
-    for(i=0;i<2;i++){
-        rowContainer=document.createElement('div');
-        rowContainer.setAttribute('class','brands-row-container');
-        rowContainer.setAttribute('id','brands-row-container'+i);
-        rowContainer.setAttribute("style","height:50%;")
-        for(j=0;j<brandsCount/2;j++){
-            unit_num=brandsCount/2*i+j;
-            columnContainer=document.createElement('div');
-            columnContainer.setAttribute('class','brands-column-container');
-            columnContainer.setAttribute('id','brands-column-container'+unit_num);
-            columnContainer.setAttribute("style","width:"+(200/brandsCount)+"%;");
-            logo=document.createElement('img');
-            logo.setAttribute("class","brand-logo");
-            logo.setAttribute("src",brands_logo_url[unit_num]);
+function drawMainPageBrands() {
+    var container = document.getElementById("jmsy-bs-mainpage-brands");
+    brandsCount = 20; //确保是偶数
+    brandsCount = 2 * parseInt(brandsCount / 2);
+    var brands_logo_url = ['http://img3.winshang.com/Upload/brand/logo/2017/11/21/131557178203281020.jpg', 'http://yst.winshang.com/member/PinPai/2011/5/30/20115302247269846631_1.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/10/18/131527809940217752.jpg', 'http://yst.winshang.com/member/PinPai/2013/7/10/20137101053211402641_1.gif', 'http://img3.winshang.com/Upload/brand/logo/2017/12/19/131581451539724417.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/12/15/131577976674743721.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/10/19/131528799680148784.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/11/28/131563344420248405.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/12/19/131581264133017531.jpg', 'http://img3.winshang.com/Upload/brand/logo/2018/9/11/131811060504024298.jpg', 'http://img3.winshang.com/Upload/brand/logo/2019/5/6/132016054818604462.png', 'http://img3.winshang.com/Upload/brand/logo/2017/10/13/131523350865915985.jpg', 'http://img3.winshang.com/Upload/brand/logo/2018/4/17/131684295598297770.jpg', 'http://img3.winshang.com/Upload/brand/logo/2018/6/28/131746495039504580.png', 'http://img3.winshang.com/Upload/brand/logo/2017/11/27/131562462955691818.jpg', 'http://img3.winshang.com/Upload/brand/logo/2019/10/31/132169773969467090.png', 'http://img3.winshang.com/Upload/brand/logo/2019/4/24/132005730051166545.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/8/15/131472398716203089.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/10/11/131521784680107927.jpg', 'http://img3.winshang.com/Upload/brand/logo/2017/10/27/131535581465733330.jpg'];
+    for (i = 0; i < 2; i++) {
+        rowContainer = document.createElement('div');
+        rowContainer.setAttribute('class', 'brands-row-container');
+        rowContainer.setAttribute('id', 'brands-row-container' + i);
+        rowContainer.setAttribute("style", "height:50%;")
+        for (j = 0; j < brandsCount / 2; j++) {
+            unit_num = brandsCount / 2 * i + j;
+            columnContainer = document.createElement('div');
+            columnContainer.setAttribute('class', 'brands-column-container');
+            columnContainer.setAttribute('id', 'brands-column-container' + unit_num);
+            columnContainer.setAttribute("style", "width:" + (200 / brandsCount) + "%;");
+            logo = document.createElement('img');
+            logo.setAttribute("class", "brand-logo");
+            logo.setAttribute("src", brands_logo_url[unit_num]);
             columnContainer.appendChild(logo);
             rowContainer.appendChild(columnContainer);
         };
@@ -710,3 +709,44 @@ function drawMainPageBrands(){
     };
 }
 drawMainPageBrands();
+
+function drawVipRoseChart() {
+    container = document.getElementById('jmsy-bs-mainpage-viprosechart');
+    var projects = ['长沙', '南京', '青岛', '丽江'];
+    var vipsCount = [54543, 43413, 43412, 12434];
+    chartData = [];
+    for (i = 0; i < projects.length; i++) {
+        chartData.push({
+            value: vipsCount[i],
+            name: projects[i]
+        });
+    };
+    var option = {
+        legend: {
+            left: "left",
+            top: "center",
+            data: projects,
+            orient: "vertical",
+            textStyle: {
+                color: "snow"
+            }
+        },
+
+        label: {
+            show: false
+        },
+        series: [{
+            type: "pie",
+            center: ["60%", "50%"],
+            radius: ["20%", "80%"],
+            roseType: "radius",
+            label: {
+                show: false
+            },
+            data: chartData
+        }]
+    };
+    pieChart = echarts.init(container, "jmsy");
+    pieChart.setOption(option);
+}
+drawVipRoseChart();

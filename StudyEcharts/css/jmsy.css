@@ -1,112 +1,154 @@
-
-html,body{
-    height:100vh;
-    width:100vw;
-    padding:0px;
-    font-size:0px;
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    font-size: 0px;
     line-height: 0px;
 }
 
-div.echarts-container{
-    height:100%;
-    width:100%;
-    position:absolute;
+@font-face {
+    font-family: 'MFBanHei_Noncommercial';
+    src: url('../css/fonts/MFBanHei_Noncommercial-Regular.ttf') format('truetype');
 }
-#jmsy-bs-mainpage-body{
-    margin:0px;
+
+div.echarts-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#jmsy-bs-mainpage-body {
+    margin: 0px;
     background-image: url(../img/background02.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
     overflow: hidden;
 }
-#jmsy-bs-mainpage-container{
-    width:100%;
-    height:100%;
-    margin:0px;  
+
+#jmsy-bs-mainpage-container {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
     background-attachment: fixed;
     background-size: 100% 100%;
-    background-color: rgba(10,90,255,0.05);
+    background-color: rgba(10, 90, 255, 0.05);
     position: absolute;
 }
-.jmsy-bs-title-container{
+
+.jmsy-bs-title-container {
     text-align: center;
-    top:0px;
+    top: 0px;
     position: relative;
-    width:100%;
+    width: 100%;
 }
 
-p.jmsy-bs-title{
+p.jmsy-bs-title {
     font-size: 28px;
     color: snow;
 }
 
-#jmsy-bs-mainpage-content-container{
-    margin:0px;
+#jmsy-bs-mainpage-content-container {
+    margin: 0px;
     border-radius: 0%;
-    font-size:0px;
+    font-size: 0px;
     display: inline-block;
     height: 90%;
     width: 100%;
 }
 
-div.jmsy-bs-content-card{
+div.jmsy-bs-content-card {
     font-size: 0px;
-    background-image:linear-gradient(to bottom,rgba(1,4,19,0.3),rgba(40,50,180,0.1));
-    background-size:100%;
-    margin:5px 5px 10px;
+    background-image: linear-gradient(to bottom, rgba(1, 4, 19, 0.3), rgba(40, 50, 180, 0.1));
+    background-size: 100%;
+    margin: 5px 5px 10px;
     position: relative;
 }
-p.jmsy-bs-content-card-title{
+
+p.jmsy-bs-content-card-title {
     font-size: 18px;
     color: #216eff;
-    font-weight:bold;
-    margin:10px 0px 0px 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
     position: absolute;
 }
 
-div.jmsy-bs-content-card > span {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-    }
-div.jmsy-bs-content-card > span.top-left { 
-       border-top: 2px solid #216eff;
-       border-left: 2px solid #216eff;
-   }
-div.jmsy-bs-content-card > span.top-right {
-       right: 0;
-       border-top: 2px solid #216eff;
-       border-right: 2px solid #216eff;
-   }
-div.jmsy-bs-content-card > span.bottom-left {
-       bottom: 0;
-       border-left: 2px solid #216eff;
-       border-bottom: 2px solid #216eff;
-   }
-div.jmsy-bs-content-card > span.bottom-right {
-       right: 0;
-       bottom:0;
-       border-right: 2px solid #216eff;
-       border-bottom: 2px solid #216eff;
-   }
-
-#jmsy-bs-mainpage-brands{
-    position:absolute;
-    margin:40px 10px 10px 10px;
-    height:calc(100% - 50px);
-    width:calc(100% - 20px);
-}
-div.brands-row-container{
-    width:100%;
+div.jmsy-bs-content-card>span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
 }
 
-div.brands-column-container{
-    height:100%;
-    display:inline-block;
+div.jmsy-bs-content-card>span.top-left {
+    border-top: 2px solid #216eff;
+    border-left: 2px solid #216eff;
 }
 
-img.brand-logo{
-    height:80%;
-    width:80%;
+div.jmsy-bs-content-card>span.top-right {
+    right: 0;
+    border-top: 2px solid #216eff;
+    border-right: 2px solid #216eff;
+}
+
+div.jmsy-bs-content-card>span.bottom-left {
+    bottom: 0;
+    border-left: 2px solid #216eff;
+    border-bottom: 2px solid #216eff;
+}
+
+div.jmsy-bs-content-card>span.bottom-right {
+    right: 0;
+    bottom: 0;
+    border-right: 2px solid #216eff;
+    border-bottom: 2px solid #216eff;
+}
+
+#jmsy-bs-mainpage-brands {
+    position: absolute;
+    margin: 40px 10px 10px 10px;
+    height: calc(100% - 50px);
+    width: calc(100% - 20px);
+}
+
+div.brands-row-container {
+    width: 100%;
+}
+
+div.brands-column-container {
+    height: 100%;
+    display: inline-block;
+}
+
+img.brand-logo {
+    height: 80%;
+    width: 80%;
+}
+
+#jmsy-bs-mainpage-personflow-updateat {
+    position: absolute;
+    margin-top: 25px;
+    right: 20px;
+    width: calc(100% - 20px);
+    font-size: 10px;
+    color: grey;
+    text-align: right;
+}
+
+p.jmsy-bs-mainpage-kpi-big {
+    font-style: italic;
+    font-size: 36px;
+    font-family: MFBanHei_Noncommercial;
+    display: inline-block;
+    line-height: 30%;
+    margin: 10px 0px;
+    letter-spacing: 2px;
+}
+
+p.jmsy-bs-mainpage-kpi-small {
+    font-size: 16px;
+    color: #216eff;
+    display: inline-block;
+    position: relative;
 }
