@@ -47,8 +47,8 @@
             <div id="jmsy-bs-mainpage-center" style="display: inline-block; width:55%;height:100%;">
 
                 <!-- 1. 地图 -->
-                <div id="jmsy-bs-mainpage-map" style="height:80%;">
-
+                <div style="height:80%;">
+                    <div id="jmsy-bs-mainpage-map" class="echarts-container"></div>
                 </div>
 
                 <!-- 1. 签约品牌 -->
@@ -146,10 +146,15 @@
 
                         <!-- 中段，玫瑰图与柱状图 -->
                         <div style="position: relative;height:40%;width:100%;">
-                            <div class="echarts-container" style="width:50%;display: inline-block;">
-                                <div id="jmsy-bs-mainpage-viprosechart" class="echarts-container"></div>
+                            <div class="jmsy-bs-content-card-no-border">
+                                <div class="echarts-container" style="width:50%;display: inline-block;position: relative;">
+                                    <div id="jmsy-bs-mainpage-viprosechart" class="echarts-container"></div>
+                                </div>
+                                <div class="echarts-container" style="width:50%;display: inline-block;position: relative;">
+                                    <div id="jmsy-bs-mainpage-vipsbysex" class="echarts-container"></div>
+                                </div>
                             </div>
-                            <div class="echarts-container" style="width:50%;display: inline-block;"></div>
+
                         </div>
 
                         <!-- 下段，年龄 -->

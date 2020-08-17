@@ -582,6 +582,7 @@ function drawMainPageVippopularity() {
             shops[i] = shops[i].substring(0, 4) + "...";
         };
     };
+
     for (i = 0; i < shops.length; i++) {
         shopsData.push({
             name: shops[i],
@@ -665,9 +666,9 @@ function drawMainPageVippopularity() {
             barCategoryGap: "50%",
             itemStyle: {
                 normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                    color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [{
                         offset: 0,
-                        color: "#01837Aa0"
+                        color: "#1852c0a0"
                     }, {
                         offset: 1,
                         color: "#01FFD1a0"
@@ -677,7 +678,6 @@ function drawMainPageVippopularity() {
         }]
     };
     var vipPopularity_container = document.getElementById("jmsy-bs-mainpage-vippopularity");
-    console.debug(vipPopularity_container);
     vipPopularity_chart = echarts.init(vipPopularity_container, "jmsy");
     vipPopularity_chart.setOption(option);
 }
@@ -738,7 +738,7 @@ function drawVipRoseChart() {
         series: [{
             type: "pie",
             center: ["60%", "50%"],
-            radius: ["20%", "80%"],
+            radius: ["50%", "75%"],
             roseType: "radius",
             label: {
                 show: false
@@ -750,3 +750,101 @@ function drawVipRoseChart() {
     pieChart.setOption(option);
 }
 drawVipRoseChart();
+
+function drawVipsBySex() {
+    container = document.getElementById("jmsy-bs-mainpage-vipsbysex");
+    var category = ["男性", "女性"];
+    var values = [104928, 18694];
+    option = {
+        grid: {
+            show: false,
+            bottom: 40,
+            top: 20,
+            left: 40,
+            right: 40
+        },
+        xAxis: {
+            type: "category",
+            show: true,
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#153271"
+                }
+            }
+        },
+
+        yAxis: {
+            type: "value",
+            data: values,
+            axisLabel: {
+                show: false
+            },
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            grid: {
+                show: false
+            },
+            splitLine: {
+                show: false
+            },
+            splitArea: {
+                show: false
+            }
+        },
+
+        series: [{
+                type: "bar",
+                data: [values[0]],
+                barWidth: "20%",
+                label: {
+                    show: true,
+                    position: "bottom",
+                    color: "snow",
+                    formatter: "男性"
+                },
+                barGap: "100%",
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: "#280aeaa0"
+                        }, {
+                            offset: 1,
+                            color: "#0c125ba0"
+                        }])
+                    }
+                }
+            },
+            {
+                type: "bar",
+                data: [values[1]],
+                barWidth: "20%",
+                label: {
+                    show: true,
+                    position: "bottom",
+                    color: "snow",
+                    formatter: "女性"
+                },
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: "#01dab8a0"
+                        }, {
+                            offset: 1,
+                            color: "#045a66a0"
+                        }])
+                    }
+                }
+            }
+        ]
+    };
+    vipsBySexChart = echarts.init(container, "jmsy");
+    vipsBySexChart.setOption(option);
+}
+drawVipsBySex();

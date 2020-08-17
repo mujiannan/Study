@@ -66,6 +66,16 @@ div.jmsy-bs-content-card {
     position: relative;
 }
 
+div.jmsy-bs-content-card-no-border {
+    font-size: 0px;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(1, 4, 19, 0.3), rgba(40, 50, 180, 0.1));
+    background-size: 100%;
+    margin: 10px 10px;
+    position: relative;
+}
+
 p.jmsy-bs-content-card-title {
     font-size: 18px;
     color: #216eff;
