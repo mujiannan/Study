@@ -72,7 +72,7 @@ div.jmsy-bs-content-card-no-border {
     height: 100%;
     background-image: linear-gradient(to bottom, rgba(1, 4, 19, 0.3), rgba(60, 80, 180, 0.12));
     background-size: 100%;
-    margin: 10px 10px;
+    margin: 0px 10px;
     position: relative;
 }
 
