@@ -772,7 +772,7 @@ function drawVipRoseChart() {
         },
         series: [{
             type: "pie",
-            center: ["60%", "50%"],
+            center: ["65%", "50%"],
             radius: ["50%", "75%"],
             roseType: "radius",
             label: {
