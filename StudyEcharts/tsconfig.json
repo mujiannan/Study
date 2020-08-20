@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "./js",
+        "allowJs": true,
+        "target": "es5",
+        "module": "es6",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "strict": true,
+    },
+    "include": [
+        "./ts/calendar.ts"
+    ]
+}

@@ -1,15 +1,26 @@
 {
-  "name": "studyecharts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "echarts": "^4.8.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "mujiannan",
-  "license": "ISC"
+    "name": "studyecharts",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "@fullcalendar/core": "^5.3.0",
+        "@fullcalendar/daygrid": "^5.3.0",
+        "echarts": "^4.8.0"
+    },
+    "devDependencies": {
+        "awesome-typescript-loader": "^5.2.1",
+        "css-loader": "^4.2.1",
+        "mini-css-extract-plugin": "^0.10.0",
+        "source-map-loader": "^1.0.2",
+        "ts-loader": "^8.0.2",
+        "typescript": "^3.9.7",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "mujiannan",
+    "license": "ISC"
 }
