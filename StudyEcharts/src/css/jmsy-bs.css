@@ -9,7 +9,7 @@ body {
 
 @font-face {
     font-family: 'MFBanHei_Noncommercial';
-    src: url('../css/fonts/MFBanHei_Noncommercial-Regular.ttf') format('truetype');
+    src: url('./fonts/MFBanHei_Noncommercial-Regular.ttf') format('truetype');
 }
 
 div.echarts-container {
@@ -80,9 +80,10 @@ p.jmsy-bs-content-card-title {
     font-size: 18px;
     color: #216eff;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
     position: absolute;
+    vertical-align: middle;
 }
 
 div.jmsy-bs-content-card>span {

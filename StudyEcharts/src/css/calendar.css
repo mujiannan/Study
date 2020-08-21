@@ -1,0 +1,9 @@
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+:root {
+    --fc-border-color: snow;
+    --fc-page-bg-color: snow;
+}

@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
     mode: 'development',
     devtool: 'sourcemap',
-    entry: './ts/calendar.ts',
+    entry: './src/ts/main.ts',
     resolve: {
         extensions: ['.ts', '.js']
     },
@@ -20,14 +20,34 @@ module.exports = {
                     { loader: MiniCssExtractPlugin.loader },
                     { loader: 'css-loader', options: { importLoaders: 1 } }
                 ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/'
+                    }
+                }]
+            },
+            {
+                test: /\.(jpg|png|jpeg|)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'imgs/'
+                    }
+                }]
             }
         ]
     },
     output: {
-        filename: 'main.js',
+        filename: 'bundle.js',
         path: path.join(__dirname, 'dist')
     },
     plugins: [new MiniCssExtractPlugin({
-        filename: './css/calendar.css'
+        filename: './bundle.css'
     })]
 }
