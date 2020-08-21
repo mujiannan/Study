@@ -4,7 +4,6 @@ body {
     width: 100vw;
     padding: 0px;
     font-size: 0px;
-    line-height: 0px;
 }
 
 @font-face {
@@ -39,7 +38,8 @@ div.echarts-container {
 
 .jmsy-bs-title-container {
     text-align: center;
-    top: 0px;
+    height: 8%;
+    vertical-align: middle;
     position: relative;
     width: 100%;
 }
@@ -47,14 +47,17 @@ div.echarts-container {
 p.jmsy-bs-title {
     font-size: 28px;
     color: snow;
+    position: relative;
+    transform: translateY(20px);
 }
 
 #jmsy-bs-mainpage-content-container {
     margin: 0px;
     border-radius: 0%;
     font-size: 0px;
-    display: inline-block;
-    height: 90%;
+    display: block;
+    position: relative;
+    height: calc(92% - 20px);
     width: 100%;
 }
 
