@@ -10,7 +10,7 @@
     --fc-neutral-bg-color: rgba(208, 208, 208, 0);
     --fc-neutral-text-color: #fff;
     --fc-now-indicator-color: red;
-    --fc-small-font-size: .6em;
+    --fc-small-font-size: 0.8rem;
     /* 今天 */
     --fc-today-bg-color: #9e8071;
     /* 活动 */

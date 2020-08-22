@@ -3,7 +3,7 @@ body {
     height: 100vh;
     width: 100vw;
     padding: 0px;
-    font-size: 0px;
+    font-size: 1.3vh;
 }
 
 @font-face {
@@ -45,7 +45,7 @@ div.echarts-container {
 }
 
 p.jmsy-bs-title {
-    font-size: 28px;
+    font-size: 2.2rem;
     color: snow;
     position: relative;
     transform: translateY(20px);
@@ -80,7 +80,7 @@ div.jmsy-bs-content-card-no-border {
 }
 
 p.jmsy-bs-content-card-title {
-    font-size: 18px;
+    font-size: 1.4rem;
     color: #216eff;
     font-weight: bold;
     margin-top: 10px;
@@ -153,7 +153,7 @@ img.brand-logo {
 
 p.jmsy-bs-mainpage-kpi-big {
     font-style: italic;
-    font-size: 36px;
+    font-size: 2.5rem;
     font-family: MFBanHei_Noncommercial;
     display: inline-block;
     line-height: 30%;
@@ -162,7 +162,7 @@ p.jmsy-bs-mainpage-kpi-big {
 }
 
 p.jmsy-bs-mainpage-kpi-small {
-    font-size: 16px;
+    font-size: 1.2rem;
     color: #216eff;
     display: inline-block;
     position: relative;
