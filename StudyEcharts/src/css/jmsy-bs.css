@@ -3,6 +3,7 @@ body {
     height: 100vh;
     width: 100vw;
     padding: 0px;
+    margin: 0px;
     font-size: 1.3vh;
 }
 
@@ -23,7 +24,6 @@ div.echarts-container {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    overflow: hidden;
 }
 
 #jmsy-bs-mainpage-container {
@@ -34,13 +34,15 @@ div.echarts-container {
     background-size: 100% 100%;
     background-color: rgba(10, 90, 255, 0.05);
     position: absolute;
+    overflow: hidden;
 }
 
 .jmsy-bs-title-container {
     text-align: center;
-    height: 8%;
+    height: 8vh;
+    margin: 0px;
     vertical-align: middle;
-    position: relative;
+    position: fixed;
     width: 100%;
 }
 
@@ -51,14 +53,18 @@ p.jmsy-bs-title {
     transform: translateY(20px);
 }
 
-#jmsy-bs-mainpage-content-container {
-    margin: 0px;
+.jmsy-bs-mainpage-content-container {
+    margin: 8vh 0px 0px;
     border-radius: 0%;
     font-size: 0px;
-    display: block;
-    position: relative;
-    height: calc(92% - 20px);
-    width: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 90vh;
+    width: 100vw;
+}
+
+#jmsy-bs-mainpage-content-container2 {
+    margin-left: 100vw;
 }
 
 div.jmsy-bs-content-card {
