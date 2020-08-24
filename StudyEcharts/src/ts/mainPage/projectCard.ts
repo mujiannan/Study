@@ -36,9 +36,9 @@ export class ProjectCard{
         //开铺率
         let openingRateContainer=document.createElement("div");
         rowTop.appendChild(openingRateContainer);
+        this.container.appendChild(rowTop);
         this.drawOpeningRate(openingRateContainer,data.openingRate);
 
-        this.container.appendChild(rowTop);
         
         //销售开铺率
         //日销售
@@ -46,14 +46,15 @@ export class ProjectCard{
 
     }
     private drawOpeningRate(openingRateContainer:HTMLDivElement,value:number){
-        openingRateContainer.className="echarts-container";
-        let option:echarts.EChartOption = {
+        openingRateContainer.className="echarts-container jmsy-bs-project-card-openingrate";
+        let option = {
             series: [{
                 name: "开铺率",
                 type: "gauge",
-                startAngle: 90,
-                endAngle: -269,
+                startAngle: 225,
+                endAngle: -45,
                 splitNumber: 2,
+                clockwise:true,
                 axisLine: {
                     show: true,
                     lineStyle: {
@@ -61,7 +62,7 @@ export class ProjectCard{
                             [value, "#be967c"],
                             [1, "#343d5a"]
                         ],
-                        width: 10
+                        width: 14
                     }
                 },
                 pointer: {
@@ -81,15 +82,16 @@ export class ProjectCard{
                 max: 100,
                 title: {
                     show: true,
-                    offsetCenter: [0, "150%"],
+                    offsetCenter: [0, "80%"],
                     color: "snow",
                     fontSize: 16
                 },
                 detail: {
                     show: true,
                     offsetCenter: ["0%", "0%"],
-                    fontSize: 20,
-                    color: "#be967c"
+                    fontSize: 32,
+                    color: "#be967c",
+                    formatter:"{value}%"
                 },
                 data: [{ value: Math.round(100 * value), name: "开铺率" }]
             }]
