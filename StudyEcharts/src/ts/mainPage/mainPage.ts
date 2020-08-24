@@ -1,5 +1,10 @@
+import {ProjectCard} from './projectCard';
 export class MainPage {
     private mainPageContainer: HTMLDivElement = <HTMLDivElement>document.getElementById("jmsy-bs-mainpage-container");
+    constructor(){
+        this.drawProjectCards();
+        this.startAnimation();
+    }
     public startAnimation() {
         this.switchPage();
     }
@@ -9,9 +14,9 @@ export class MainPage {
             if (container.scrollLeft == 0) {
                 this.scrollHorizontal(40, 10);
             } else {
-                this.scrollHorizontal(-40, 10);
+                //this.scrollHorizontal(-40, 10);
             };
-        }, 1000 * 10
+        }, 100 * 10
         );
     }
 
@@ -27,5 +32,12 @@ export class MainPage {
                 clearInterval(act);
             };
         }, internal);
+    }
+
+    public drawProjectCards(){
+        let projectCardsContainers:HTMLCollectionOf<HTMLDivElement>=<HTMLCollectionOf<HTMLDivElement>>document.getElementsByClassName("jmsy-bs-mainpage-project-card");
+        for(let i=0;i<projectCardsContainers.length;i++){
+            let card=new ProjectCard(ProjectCard.generateVirtualData(i),projectCardsContainers[i]);
+        };
     }
 }

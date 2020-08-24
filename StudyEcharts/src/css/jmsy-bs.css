@@ -27,8 +27,8 @@ div.echarts-container {
 }
 
 #jmsy-bs-mainpage-container {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     margin: 0px;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -83,6 +83,45 @@ div.jmsy-bs-content-card-no-border {
     background-size: 100%;
     margin: 0px 10px;
     position: relative;
+}
+
+div.jmsy-bs-mainpage-project-card {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    position: absolute;
+    display: block;
+}
+
+div.jmsy-bs-mainpage-page2-card-title-container {
+    width: 10vw;
+    height: 6vh;
+    margin: 0px 0px 0px 1vw;
+    background-image: linear-gradient(to right, #01041500, #07237e33);
+    position: absolute;
+    display: block;
+    text-align: left;
+    border-style: solid;
+    border-left: none;
+    border-image: linear-gradient(to right, #02072100, #02072100, #07237ecc) 1 stretch;
+    transform: skewX(-12deg);
+}
+
+div.jmsy-bs-mainpage-page2-card-rows-top {
+    width: 100%;
+    height: calc(50% - 3vh);
+    margin: 0px;
+    position: relative;
+    display: block;
+}
+
+p.jmsy-bs-mainpage-page2-card-title {
+    font-size: 1.8rem;
+    margin-left: 1vw;
+    color: #a2cbe0;
+    display: block;
+    height: 100%;
+    transform: translateY(25%);
 }
 
 p.jmsy-bs-content-card-title {

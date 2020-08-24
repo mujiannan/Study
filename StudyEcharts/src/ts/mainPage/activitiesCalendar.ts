@@ -6,7 +6,7 @@ import listPlugin from '@fullcalendar/list';
 import cnLocale from '@fullcalendar/core/locales/zh-cn';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css'; // webpack uses file-loader to handle font files
-import '../css/calendar.css';
+import '../../css/calendar.css';
 
 
 interface ActivityData{
