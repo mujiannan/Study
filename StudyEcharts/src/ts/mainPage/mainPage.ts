@@ -24,8 +24,6 @@ export class MainPage {
         let container: HTMLDivElement = this.mainPageContainer;
         let scrollLeft: number;
         let act = setInterval(function () {
-            console.debug("scrollLeft", container.scrollLeft);
-            console.debug("scrollWidth", container.scrollWidth);
             scrollLeft = container.scrollLeft;
             container.scrollLeft += step;
             if (scrollLeft == container.scrollLeft) {
