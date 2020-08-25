@@ -125,62 +125,7 @@ div.jmsy-bs-mainpage-page2-card-title-container {
 }
 
 
-/* 主页第二页项目卡 */
 
-div.jmsy-bs-mainpage-page2-card-rows-top {
-    width: 100%;
-    height: calc(50% - 3vh);
-    margin: 6vh 0px 0px 0px;
-    position: relative;
-    display: block;
-}
-
-div.jmsy-bs-mainpage-page2-card-rows-bottom {
-    width: 100%;
-    height: calc(50% - 3vh);
-    position: relative;
-    display: block;
-}
-
-div.jmsy-bs-project-card-openingrate {
-    height: 100%;
-    width: 25%;
-    display: inline-block;
-    margin: 0px;
-    position: relative;
-}
-
-div.jmsy-bs-mainpage-page2-card-top-center {
-    height: 100%;
-    width: 25%;
-    display: inline-block;
-    margin: 0px;
-    position: relative;
-}
-
-div.jmsy-bs-mainpage-page2-card-bottom-center {
-    height: 100%;
-    width: 25%;
-    display: inline-block;
-    position: relative;
-}
-
-div.jmsy-bs-mainpage-page2-card-center-wide {
-    height: calc(50% - 1vh);
-    margin: 0px 0.6vw 0.5vh 0.6vw;
-    width: calc(100% - 0.6vw);
-    display: block;
-    position: relative;
-}
-
-p.jmsy-bs-mainpage-page2-card-title {
-    font-size: 1.8rem;
-    margin-left: 1vw;
-    color: #a2cbe0;
-    display: block;
-    height: 100%;
-    transform: translateY(25%);
-}
 
 p.jmsy-bs-content-card-title {
     font-size: 1.4rem;
@@ -276,3 +221,70 @@ p.jmsy-bs-mainpage-kpi-small {
     display: inline-block;
     position: relative;
 }
+
+
+/* 主页第二页项目卡 */
+
+div.jmsy-bs-mainpage-page2-card-rows-top {
+    width: 100%;
+    height: calc(50% - 3vh);
+    margin: 6vh 0px 0px 0px;
+    position: relative;
+    display: block;
+}
+
+div.jmsy-bs-mainpage-page2-card-rows-bottom {
+    width: 100%;
+    height: calc(50% - 3vh);
+    position: relative;
+    display: block;
+}
+
+div.jmsy-bs-project-card-openingrate {
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+    margin: 0px;
+    position: relative;
+}
+/* 主页第二页项目卡中栏 */
+div.jmsy-bs-mainpage-page2-card-top-center {
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+    margin: 0px;
+    position: relative;
+}
+
+/* 主页第二页项目卡右栏（放折线图） */
+div.jmsy-bs-mainpage-page2-data-by-days{
+    display: inline-block;
+    position: relative;
+    width:50%;
+    height:100%;
+}
+
+div.jmsy-bs-mainpage-page2-card-bottom-center {
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+    position: relative;
+}
+
+div.jmsy-bs-mainpage-page2-card-center-wide {
+    height: calc(50% - 2vh);
+    margin: 0px 0.6vw 1vh 0.6vw;
+    width: calc(100% - 0.6vw);
+    display: block;
+    position: relative;
+}
+
+p.jmsy-bs-mainpage-page2-card-title {
+    font-size: 1.8rem;
+    margin-left: 1vw;
+    color: #a2cbe0;
+    display: block;
+    height: 100%;
+    transform: translateY(25%);
+}
+

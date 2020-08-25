@@ -3,6 +3,7 @@ interface IMiniKpiCardOption{
     title?:string,
     titleSize?:string,
     value?:number,
+    insteadValue?:string,
     label?:string,//单位
     valueColor?:string,
     labelColor?:string,
@@ -65,10 +66,10 @@ export class MiniKpiCard{
         let titleSize:string=option.titleSize??"1rem";
         let value:number=option.value??0;
         let hasValue:boolean=option.value?true:false;
-        let insteadValue:string="无";
+        let insteadValue:string=option.insteadValue??"无";
         let label:string=option.label??"";
         let valueColor:string=option.valueColor??"snow";
-        let labelColor:string=option.labelColor??"snow";
+        let labelColor:string=option.labelColor??valueColor;
         let valueSize:string=option.valueSize??"2.2rem";
         let labelSize:string=option.labelSize??"1.5rem";
         let valueFontStyle:string=option.valueFontStyle??"italic";
