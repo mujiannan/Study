@@ -19,22 +19,6 @@ div.echarts-container {
     font-size: 1.3vh;
 }
 
-div.jmsy-bs-mainpage-page2-yoy {
-    position: absolute;
-    height: 100%;
-    display: inline-block;
-    margin-right: 0.5vh;
-    width: calc(50% - 0.5vh);
-}
-
-div.jmsy-bs-mainpage-page2-dod {
-    position: absolute;
-    height: 100%;
-    display: inline-block;
-    margin-left: calc(50% + 0.5vh);
-    width: calc(50% - 0.5vh);
-}
-
 #jmsy-bs-mainpage-body {
     margin: 0px;
     background-image: url(../img/background02.png);
@@ -123,9 +107,6 @@ div.jmsy-bs-mainpage-page2-card-title-container {
     border-image: linear-gradient(to right, #02072100, #02072100, #07237ecc) 1 stretch;
     transform: skewX(-12deg);
 }
-
-
-
 
 p.jmsy-bs-content-card-title {
     font-size: 1.4rem;
@@ -247,7 +228,15 @@ div.jmsy-bs-project-card-openingrate {
     margin: 0px;
     position: relative;
 }
+
+div.jmsy-bs-mainpage-page2-small-linear-background {
+    background-image: linear-gradient(to bottom, rgba(1, 4, 19, 0.05), rgba(60, 80, 180, 0.15));
+    background-size: 100%;
+}
+
+
 /* 主页第二页项目卡中栏 */
+
 div.jmsy-bs-mainpage-page2-card-top-center {
     height: 100%;
     width: 25%;
@@ -256,26 +245,48 @@ div.jmsy-bs-mainpage-page2-card-top-center {
     position: relative;
 }
 
+div.jmsy-bs-mainpage-page2-card-center-wide {
+    height: calc(50% - 2vh);
+    top: 0px;
+    margin: 0px 0.6vw 1vh 0.6vw;
+    width: calc(100% - 0.6vw);
+    display: block;
+    position: relative;
+}
+
+div.jmsy-bs-mainpage-page2-yoy {
+    position: absolute;
+    height: 100%;
+    display: inline-block;
+    margin-right: 0.5vh;
+    width: calc(50% - 0.5vh);
+}
+
+div.jmsy-bs-mainpage-page2-dod {
+    position: absolute;
+    height: 100%;
+    display: inline-block;
+    margin-left: calc(50% + 0.5vh);
+    width: calc(50% - 0.5vh);
+}
+
+
 /* 主页第二页项目卡右栏（放折线图） */
-div.jmsy-bs-mainpage-page2-data-by-days{
+
+div.jmsy-bs-mainpage-page2-data-by-days {
     display: inline-block;
     position: relative;
-    width:50%;
-    height:100%;
+    width: calc(50% - 2vw);
+    margin-bottom: 3vh;
+    height: calc(100% - 3vh);
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 div.jmsy-bs-mainpage-page2-card-bottom-center {
     height: 100%;
     width: 25%;
     display: inline-block;
-    position: relative;
-}
-
-div.jmsy-bs-mainpage-page2-card-center-wide {
-    height: calc(50% - 2vh);
-    margin: 0px 0.6vw 1vh 0.6vw;
-    width: calc(100% - 0.6vw);
-    display: block;
     position: relative;
 }
 
@@ -287,4 +298,3 @@ p.jmsy-bs-mainpage-page2-card-title {
     height: 100%;
     transform: translateY(25%);
 }
-

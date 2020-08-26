@@ -24,7 +24,6 @@ export class MiniKpiCard{
         this.container=container;
         let card=document.createElement("div");
         card.className="mini-kpi-card-inner-container";
-        card.setAttribute("style","margin:0.5vh 0px;")
         container.appendChild(card);
 
         

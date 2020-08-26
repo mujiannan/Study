@@ -11,13 +11,13 @@ interface ProjectOperatingData {
     peopleFlow: number;
     peopleFlow_PY: number;
     peopleFlow_PD: number;
-    dataByDays?: [{
+    dataByDays?: {
         day: number,
         salesTotal: number,
         salesTotal_PY: number,
         peopleFlow: number,
         peopleFlow_PY: number
-    }]
+    }[]
 }
 
 export class ProjectCard {
@@ -70,7 +70,7 @@ export class ProjectCard {
         /*中间列细节*/
         //日销售
         let salesTotalContainer = document.createElement("div");
-        salesTotalContainer.className = "jmsy-bs-mainpage-page2-card-center-wide";
+        salesTotalContainer.className = "jmsy-bs-mainpage-page2-card-center-wide jmsy-bs-mainpage-page2-small-linear-background";
         topCenterContainer.appendChild(salesTotalContainer);
         //销售同环比
         let topComparisonContainer = document.createElement("div");
@@ -78,7 +78,7 @@ export class ProjectCard {
         topCenterContainer.appendChild(topComparisonContainer);
         //日客流
         let peopleFlowContainer = document.createElement("div");
-        peopleFlowContainer.className = "jmsy-bs-mainpage-page2-card-center-wide";
+        peopleFlowContainer.className = "jmsy-bs-mainpage-page2-card-center-wide jmsy-bs-mainpage-page2-small-linear-background";
         bottomCenterContainer.appendChild(peopleFlowContainer);
         //客流同环比
         let bottomComparisonContainer = document.createElement("div");
@@ -96,40 +96,39 @@ export class ProjectCard {
 
         //日客流-中下上
         this.peopleFlowCard = new MiniKpiCard(peopleFlowContainer);
-        //this.drawWideKpiCard(peopleFlowContainer,data.peopleFlow,"日客流","人次","#1f0bbf","#1f0bbf");
 
         //销售同环比
         //同比卡
         let sales_YoY_Container = document.createElement("div");
         topComparisonContainer.appendChild(sales_YoY_Container);
-        sales_YoY_Container.className = "jmsy-bs-mainpage-page2-yoy";
+        sales_YoY_Container.className = "jmsy-bs-mainpage-page2-yoy jmsy-bs-mainpage-page2-small-linear-background";
         this.sales_YoY_Card = new MiniKpiCard(sales_YoY_Container);
         //环比卡
         let sales_DoD_Container = document.createElement("div");
         topComparisonContainer.appendChild(sales_DoD_Container);
-        sales_DoD_Container.className = "jmsy-bs-mainpage-page2-dod";
+        sales_DoD_Container.className = "jmsy-bs-mainpage-page2-dod jmsy-bs-mainpage-page2-small-linear-background";
         this.sales_DoD_Card = new MiniKpiCard(sales_DoD_Container);
 
         //销售同环比
         //同比卡
         let people_YoY_Container = document.createElement("div");
         bottomComparisonContainer.appendChild(people_YoY_Container);
-        people_YoY_Container.className = "jmsy-bs-mainpage-page2-yoy";
+        people_YoY_Container.className = "jmsy-bs-mainpage-page2-yoy jmsy-bs-mainpage-page2-small-linear-background";
         this.people_YoY_Card = new MiniKpiCard(people_YoY_Container);
         //环比卡
         let people_DoD_Container = document.createElement("div");
         bottomComparisonContainer.appendChild(people_DoD_Container);
-        people_DoD_Container.className = "jmsy-bs-mainpage-page2-dod";
+        people_DoD_Container.className = "jmsy-bs-mainpage-page2-dod jmsy-bs-mainpage-page2-small-linear-background";
         this.people_DoD_Card = new MiniKpiCard(people_DoD_Container);
 
         //逐日销售
         let salesByDaysContainer = document.createElement("div");
-        salesByDaysContainer.className = "jmsy-bs-mainpage-page2-data-by-days";
+        salesByDaysContainer.className = "jmsy-bs-mainpage-page2-data-by-days jmsy-bs-mainpage-page2-small-linear-background";
         rowTop.appendChild(salesByDaysContainer);
         this.salesByDaysChart = echarts.init(salesByDaysContainer);
         //逐日客流
         let peopleByDaysContainer = document.createElement("div");
-        peopleByDaysContainer.className = "jmsy-bs-mainpage-page2-data-by-days";
+        peopleByDaysContainer.className = "jmsy-bs-mainpage-page2-data-by-days jmsy-bs-mainpage-page2-small-linear-background";
         rowBottom.appendChild(peopleByDaysContainer);
         this.peopleByDaysChart = echarts.init(peopleByDaysContainer);
 
@@ -248,10 +247,10 @@ export class ProjectCard {
             titleSize: "1rem",
             value: data.peopleFlow,
             valueSize: "2.2rem",
-            valueColor: "#200cc2",
+            valueColor: "#8a4bff",
             label: "人次",
             labelSize: "1.2rem",
-            labelColor: "#1f0bbf"
+            labelColor: "#8a4bff"
         });
         this.people_YoY_Card.update({
             title: "同比",
@@ -274,52 +273,84 @@ export class ProjectCard {
             labelSize: "1.2rem"
         });
 
+        //折线图
+        this.updateLineChart(data);
+    }
+    private updateLineChart(data: ProjectOperatingData) {
         //逐日销售
-        let salesByDaysOption: echarts.EChartOption = {
+        
+        let days: string[] = [];
+        let salesByDaysSeries0Data: echarts.EChartOption.SeriesLine.DataObject[]=[];
+        let salesByDaysSeries1Data: echarts.EChartOption.SeriesLine.DataObject[]=[];
+        let peopleByDaysSeries0Data: echarts.EChartOption.SeriesLine.DataObject[]=[];
+        let peopleByDaysSeries1Data: echarts.EChartOption.SeriesLine.DataObject[]=[];
+console.debug(data);
+        data.dataByDays?.forEach((d) => {
+            let dayString = d.day.toString();
+            days.push(dayString);
+            salesByDaysSeries0Data.push({ name: dayString, value: d.salesTotal/10000 });
+            salesByDaysSeries1Data.push({ name: dayString, value: d.salesTotal_PY/10000 });
+            peopleByDaysSeries0Data.push({ name: dayString, value: d.peopleFlow/10000 });
+            peopleByDaysSeries1Data.push({ name: dayString, value: d.peopleFlow_PY/10000 });
+        });
+        let optionTemplet: echarts.EChartOption<echarts.EChartOption.SeriesLine> = {
             legend: {
                 show: true,
                 orient: "horizontal",
-                textStyle:{
-                    color:"snow"
+                textStyle: {
+                    color: "snow",
+                    fontSize:12
                 },
-                align: "right",
-                icon:"rect"
+                itemHeight:10,
+                itemWidth:10,
+                itemGap:20,
+                top:6,
+                right:20,
+                icon: "rect"
             },
-            grid:{
-                top:30,
-                right:10,
-                bottom:30,
-                left:30
+            grid: {
+                top: 30,
+                right: 10,
+                bottom: 30,
+                left: 30
             },
-            xAxis:{
-                show:true,
-                type:"category",
-                axisLine:{
-                    show:true,
-                    lineStyle:{
-                        color:"#153271"
-                    }
-                },
-                data:['1','2','3']
-            },
-            yAxis:{
-                show:true,
-                type:"value",
-                splitNumber:2,
-                axisLine:{
-                    show:false,
-                    lineStyle:{
-                        color:"snow"
-                    }
-                },
-                splitLine:{
-                    show:true,
-                    lineStyle:{
-                        color:"#153271"
+            xAxis: {
+                show: true,
+                type: "category",
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#153271"
                     }
                 },
                 axisTick:{
                     show:false
+                },
+                axisLabel:{
+                    show:true,
+                    interval:Math.floor(days.length/5),
+                    color:"snow"
+                },
+                data:days
+            },
+            yAxis: {
+                show: true,
+                type: "value",
+                splitNumber: 2,
+                axisLine: {
+                    show: false,
+                    lineStyle: {
+                        color: "snow"
+                    }
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#153271"
+                    }
+                },
+                axisTick: {
+                    show: false
                 }
             },
             series: [
@@ -327,33 +358,118 @@ export class ProjectCard {
                     type: "line",
                     name: "销售",
                     smooth: true,
-                    itemStyle:{
-                        color:"#00ffd0"
+                    itemStyle: {
+                        color: "#00ffd0"
                     },
                     data: [
                         { name: "1", value: 1 },
                         { name: "2", value: 2 },
                         { name: "3", value: 3 }
-                    ]
+                    ],
+                    areaStyle: {
+                        color: "#00ffd0",
+                        opacity: 0.15
+                    },
+                    showSymbol:false
                 },
                 {
                     type: "line",
                     name: "去年",
                     smooth: true,
-                    itemStyle:{
-                        color:"#aaaaaa"
+                    itemStyle: {
+                        color: "#aaaaaa"
                     },
                     data: [
                         { name: "1", value: 1 },
                         { name: "2", value: 3 },
                         { name: "3", value: 2 }
-                    ]
+                    ],
+                    areaStyle: {
+                        color: "#aaaaaa",
+                        opacity: 0.15
+                    }
                 }
             ]
         };
+        let salesByDaysOptionSeries = [
+            {
+                type: "line",
+                name: "销售",
+                smooth: true,
+                itemStyle: {
+                    color: "#00ffd0"
+                },
+                data: salesByDaysSeries0Data,
+                areaStyle: {
+                    color: "#00ffd0",
+                    opacity: 0.15
+                },
+                showSymbol:false
+            },
+            {
+                type: "line",
+                name: "去年",
+                smooth: true,
+                itemStyle: {
+                    color: "#aaaaaa"
+                },
+                data: salesByDaysSeries1Data,
+                areaStyle: {
+                    color: "#aaaaaa",
+                    opacity: 0.3
+                },
+                showSymbol:false
+            }
+        ];
+        let peopleByDaysOptionSeries = [
+            {
+                type: "line",
+                name: "客流",
+                smooth: true,
+                itemStyle: {
+                    color: "#8a4bff"
+                },
+                data: peopleByDaysSeries0Data,
+                areaStyle: {
+                    color: "#8a4bff",
+                    opacity: 0.15
+                },
+                showSymbol:false
+            },
+            {
+                type: "line",
+                name: "去年",
+                smooth: true,
+                itemStyle: {
+                    color: "#aaaaaa"
+                },
+                data: peopleByDaysSeries1Data,
+                areaStyle: {
+                    color: "#aaaaaa",
+                    opacity: 0.15
+                },
+                showSymbol:false
+            }
+        ];
+        let salesByDaysOption: echarts.EChartOption<echarts.EChartOption.SeriesLine> = JSON.parse(JSON.stringify(optionTemplet));
+        let peopleByDaysOption: echarts.EChartOption<echarts.EChartOption.SeriesLine> = JSON.parse(JSON.stringify(optionTemplet));
+        salesByDaysOption.series = salesByDaysOptionSeries;
+        peopleByDaysOption.series = peopleByDaysOptionSeries;
+        console.debug(salesByDaysOption);
         this.salesByDaysChart.setOption(salesByDaysOption);
+        this.peopleByDaysChart.setOption(peopleByDaysOption);
     }
     public static generateVirtualData(index: number): ProjectOperatingData {
+        let dataByDays:ProjectOperatingData["dataByDays"]=[];
+        for (let i = 0; i < 31; i++) {
+            dataByDays?.push({
+                day: i,
+                salesTotal: 300000 + 200000 * Math.random(),
+                salesTotal_PY: 300000 + 200000 * Math.random(),
+                peopleFlow: 200000 + 100000 * Math.random(),
+                peopleFlow_PY: 200000 + 100000 * Math.random()
+            });
+        };
         return {
             projectId: ["43001", "37001", "33201", "55301"][index],
             projectName: ["长沙览秀城", "青岛金茂湾", "南京金茂汇", "丽江J·LIFE"][index],
@@ -364,7 +480,8 @@ export class ProjectCard {
             peopleFlow: Math.floor(238989 * Math.random()),
             peopleFlow_PD: Math.floor(244098 * Math.random()),
             peopleFlow_PY: Math.floor(182439 * Math.random()),
-            openingRate_sales: 0.68 + 0.3 * Math.random()
+            openingRate_sales: 0.68 + 0.3 * Math.random(),
+            dataByDays: dataByDays
         };
     }
 }
