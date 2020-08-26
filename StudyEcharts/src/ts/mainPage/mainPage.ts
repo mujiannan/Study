@@ -1,6 +1,6 @@
 import { ProjectCard, IProjectCardData } from './projectCard';
 import { ActivitiesCalendar } from './activitiesCalendar';
-//import { ProjectsMap } from './projectsMap';
+import { ProjectsMap,IProjectMapData } from './projectsMap';
 document.addEventListener('DOMContentLoaded', function () {
     let activitiesCalendarContainer: HTMLDivElement = <HTMLDivElement>document.getElementById('jmsy-bs-mainpage-activitiescalendar');
     let activitiesCalendar: ActivitiesCalendar = new ActivitiesCalendar();
@@ -9,27 +9,40 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 export class MainPage {
     private mainPageContainer: HTMLDivElement = <HTMLDivElement>document.getElementById("jmsy-bs-mainpage-container");
-    //private projectsMap:ProjectsMap;
+    private projectsMap:ProjectsMap;
     private projectCards: ProjectCard[] = [];
     private switchPageAnimation?: number;
     constructor() {
         //第一页地图
         let projectsMapContainer = <HTMLDivElement>document.getElementById("jmsy-bs-mainpage-map");
-        this.drawProjectsMap(projectsMapContainer);
+        this.projectsMap=this.drawProjectsMap(projectsMapContainer);
         //第二页项目卡
         let projectCardContainers: HTMLCollectionOf<HTMLDivElement> = <HTMLCollectionOf<HTMLDivElement>>document.getElementsByClassName("jmsy-bs-mainpage-project-card");
         this.drawProjectCards(projectCardContainers);
-
-        this.startAnimation();
+        //处理动画
+        //this.startAnimation();
+        //更新数据
         this.update();
     }
     private update() {
-        //第二页项目卡
+
+        //<地图>
+        this.updateProjectsMap(ProjectsMap.generateVirtualData());
+        //</地图>
+
+
+        //<第二页项目卡>
+
+        //<构建虚拟项目卡数据>
         let virtualProjectCardsData: IProjectCardData[] = [];
         for (let i = 0; i < 4; i++) {
             virtualProjectCardsData.push(ProjectCard.generateVirtualData(i));
         };
+        //</构建虚拟项目卡数据>
         this.updateProjectCards(virtualProjectCardsData);
+
+        //</第二页项目卡>
+
     }
     public startAnimation() {
         this.loopSwitchPage();
@@ -65,22 +78,19 @@ export class MainPage {
     }
     //地图
     private drawProjectsMap(container:HTMLDivElement) {
-        //this.projectsMap=new ProjectsMap(container);
+        return new ProjectsMap(container);
     }
-    private updateProjectsMap() {
-
+    private updateProjectsMap(data:IProjectMapData[]) {
+        this.projectsMap.update(data);
     }
 
 
 
-    private drawProjectCards(containers: HTMLCollectionOf<HTMLDivElement>, data?: IProjectCardData[]) {
+    private drawProjectCards(containers: HTMLCollectionOf<HTMLDivElement>) {
         for (let i = 0; i < containers.length; i++) {
             let card = new ProjectCard(containers[i]);
             this.projectCards.push(card);
         };
-        if (data) {
-            this.updateProjectCards(data);
-        }
     }
 
     private updateProjectCards(data: IProjectCardData[]) {

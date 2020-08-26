@@ -564,7 +564,7 @@ function drawMainPageMap() {
 
     china_chart.setOption(option);
 }
-drawMainPageMap();
+//drawMainPageMap();
 
 
 function drawMainPageVippopularity() {
