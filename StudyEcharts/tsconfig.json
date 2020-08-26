@@ -9,6 +9,7 @@
         "strict": true,
     },
     "include": [
-        "./src/ts/main.ts"
+        "./src/ts/main.ts",
+        "./src/ts/mainPage/mainPage.ts"
     ]
 }

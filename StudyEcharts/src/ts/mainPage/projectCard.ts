@@ -1,6 +1,6 @@
 import * as echarts from 'echarts';
 import { MiniKpiCard } from '../customComponents/miniKpiCard'
-interface ProjectOperatingData {
+export interface IProjectCardData {
     projectId: string;
     projectName: string;
     openingRate: number;
@@ -22,8 +22,10 @@ interface ProjectOperatingData {
 
 export class ProjectCard {
     private container: HTMLDivElement;
-    private data: ProjectOperatingData;
     private titleContainer: HTMLDivElement;
+    private titleObj:HTMLParagraphElement;
+    private openingRateChart:echarts.ECharts;
+    private salesOpeningRateChart:echarts.ECharts;
     private salesTotalCard: MiniKpiCard;
     private peopleFlowCard: MiniKpiCard;
     private sales_YoY_Card: MiniKpiCard;
@@ -33,16 +35,14 @@ export class ProjectCard {
     private salesByDaysChart: echarts.ECharts;
     private peopleByDaysChart: echarts.ECharts;
 
-    constructor(data: ProjectOperatingData, container: HTMLDivElement) {
-        this.data = data;
+    constructor(container: HTMLDivElement,data?: IProjectCardData) {
         this.container = container;
-
         //标题
         this.titleContainer = document.createElement("div");
         this.titleContainer.setAttribute("class", "jmsy-bs-mainpage-page2-card-title-container");
         let title = document.createElement("p");
+        this.titleObj=title;
         title.setAttribute("class", "jmsy-bs-mainpage-page2-card-title");
-        title.innerText = data.projectName;
         this.titleContainer.appendChild(title);
         this.container.appendChild(this.titleContainer);
 
@@ -86,10 +86,12 @@ export class ProjectCard {
         bottomCenterContainer.appendChild(bottomComparisonContainer);
 
         //开铺率-上左
-        this.drawOpeningRate(openingRateContainer, data.openingRate);
+        openingRateContainer.className = "echarts-container jmsy-bs-project-card-openingrate";
+        this.openingRateChart = echarts.init(openingRateContainer);
 
         //销售开铺率-下左
-        this.drawOpeningRate(salesOpeningRateContainer, data.openingRate_sales, "销售开铺率");
+        salesOpeningRateContainer.className = "echarts-container jmsy-bs-project-card-openingrate";
+        this.salesOpeningRateChart=echarts.init(salesOpeningRateContainer);
 
         //日销售-中上上
         this.salesTotalCard = new MiniKpiCard(salesTotalContainer);
@@ -136,61 +138,11 @@ export class ProjectCard {
             this.update(data);
         };
     }
-    private drawOpeningRate(openingRateContainer: HTMLDivElement, value: number, name: string = "开铺率") {
-        openingRateContainer.className = "echarts-container jmsy-bs-project-card-openingrate";
-        let option = {
-            series: [{
-                name: name,
-                type: "gauge",
-                startAngle: 225,
-                endAngle: -45,
-                splitNumber: 2,
-                clockwise: true,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: [
-                            [value, "#be967c"],
-                            [1, "#343d5a"]
-                        ],
-                        width: 14
-                    }
-                },
-                pointer: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisTick: {
-                    show: false
-                },
-                axisLabel: {
-                    show: false
-                },
-                center: ["50%", "50%"],
-                min: 0,
-                max: 100,
-                title: {
-                    show: true,
-                    offsetCenter: [0, "80%"],
-                    color: "snow",
-                    fontSize: 16
-                },
-                detail: {
-                    show: true,
-                    offsetCenter: ["0%", "0%"],
-                    fontSize: 32,
-                    color: "#be967c",
-                    formatter: "{value}%"
-                },
-                data: [{ value: Math.round(100 * value), name: name }]
-            }]
-        };
-        let openingrate_chart = echarts.init(openingRateContainer);
-        openingrate_chart.setOption(option);
-    }
-    public update(data: ProjectOperatingData) {
+
+    public update(data: IProjectCardData) {
+        this.updatetitle(data.projectName);
+        this.updateOpeningRate(this.openingRateChart,data.openingRate,"开铺率");
+        this.updateOpeningRate(this.salesOpeningRateChart,data.openingRate_sales,"销售开铺率");
         let getComparisonColor: Function = function (a: number, b: number) {
             let comparisonValue = a > 0 ? (b / a - 1) : undefined;
             if (comparisonValue) {
@@ -276,7 +228,62 @@ export class ProjectCard {
         //折线图
         this.updateLineChart(data);
     }
-    private updateLineChart(data: ProjectOperatingData) {
+    private updatetitle(projectName:string){
+        this.titleObj.innerText = projectName;
+    }
+    private updateOpeningRate(chart:echarts.ECharts,value: number, name: string = "开铺率") {
+        let option = {
+            series: [{
+                name: name,
+                type: "gauge",
+                startAngle: 225,
+                endAngle: -45,
+                splitNumber: 2,
+                clockwise: true,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: [
+                            [value, "#be967c"],
+                            [1, "#343d5a"]
+                        ],
+                        width: 14
+                    }
+                },
+                pointer: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                },
+                center: ["50%", "50%"],
+                min: 0,
+                max: 100,
+                title: {
+                    show: true,
+                    offsetCenter: [0, "80%"],
+                    color: "snow",
+                    fontSize: 16
+                },
+                detail: {
+                    show: true,
+                    offsetCenter: ["0%", "0%"],
+                    fontSize: 32,
+                    color: "#be967c",
+                    formatter: "{value}%"
+                },
+                data: [{ value: Math.round(100 * value), name: name }]
+            }]
+        };
+        chart.setOption(option);
+    }
+    private updateLineChart(data: IProjectCardData) {
         //逐日销售
         
         let days: string[] = [];
@@ -284,7 +291,6 @@ export class ProjectCard {
         let salesByDaysSeries1Data: echarts.EChartOption.SeriesLine.DataObject[]=[];
         let peopleByDaysSeries0Data: echarts.EChartOption.SeriesLine.DataObject[]=[];
         let peopleByDaysSeries1Data: echarts.EChartOption.SeriesLine.DataObject[]=[];
-console.debug(data);
         data.dataByDays?.forEach((d) => {
             let dayString = d.day.toString();
             days.push(dayString);
@@ -459,8 +465,8 @@ console.debug(data);
         this.salesByDaysChart.setOption(salesByDaysOption);
         this.peopleByDaysChart.setOption(peopleByDaysOption);
     }
-    public static generateVirtualData(index: number): ProjectOperatingData {
-        let dataByDays:ProjectOperatingData["dataByDays"]=[];
+    public static generateVirtualData(index: number): IProjectCardData {
+        let dataByDays:IProjectCardData["dataByDays"]=[];
         for (let i = 0; i < 31; i++) {
             dataByDays?.push({
                 day: i,
