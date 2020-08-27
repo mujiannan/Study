@@ -7,6 +7,19 @@ body {
     font-size: 1.3vh;
 }
 
+#jmsy-mainpage-page1-decoration-line {
+    margin: 0.1vh 20px 0px;
+    width: 60%;
+    height: 0.2vh;
+    background-image: linear-gradient(to right, #0eb5dd00, #0eb5dd35, #0eb5dd55, #0eb5ddaa, #216eff55, #216eff35, #216eff00);
+}
+
+div.jmsy-bs-background-cylinder01 {
+    background-image: url(../img/cylinder01.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
 @font-face {
     font-family: 'MFBanHei_Noncommercial';
     src: url('./fonts/MFBanHei_Noncommercial-Regular.ttf') format('truetype');
@@ -85,6 +98,11 @@ div.jmsy-bs-content-card-no-border {
     margin: 0px 10px;
     position: relative;
     display: block;
+}
+
+p.jmsy-bs-mini-kpi-card-title {
+    color: snow;
+    font-size: 1rem;
 }
 
 div.jmsy-bs-mainpage-project-card {

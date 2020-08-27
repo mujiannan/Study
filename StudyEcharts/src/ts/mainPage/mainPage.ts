@@ -20,7 +20,7 @@ export class MainPage {
         let projectCardContainers: HTMLCollectionOf<HTMLDivElement> = <HTMLCollectionOf<HTMLDivElement>>document.getElementsByClassName("jmsy-bs-mainpage-project-card");
         this.drawProjectCards(projectCardContainers);
         //处理动画
-        //this.startAnimation();
+        this.startAnimation();
         //更新数据
         this.update();
     }
@@ -61,7 +61,7 @@ export class MainPage {
     }
     private loopSwitchPage() {
         let container: HTMLDivElement = this.mainPageContainer;
-        this.switchPageAnimation = setInterval(() => {
+        this.switchPageAnimation = window.setInterval(() => {
             if (container.scrollLeft == 0) {
                 this.scrollHorizontal(40, 10);
             } else {
