@@ -5,9 +5,9 @@ module.exports = {
     mode: 'development',
     devtool: 'sourcemap',
     entry: {
-        oldjs: './src/js/jmsy-bs-mainpage.js',
         main: './src/ts/main.ts',
-        mainPage: './src/ts/mainPage/mainPage.ts'
+        mainPage: ['./src/js/jmsy-bs-mainpage.js', './src/ts/mainPage/mainPage.ts'],
+        projectPage: ['./src/ts/projectPage/projectPage.ts']
     },
     resolve: {
         extensions: ['.ts', '.js']
@@ -70,12 +70,23 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: 'html-withimg-loader!' + './src/index.html',
-            chunks: ['main', 'mainPage', 'oldjs'],
+            chunks: ['main', 'mainPage'],
             filename: "index.html",
             inject: 'body',
             minify: {
                 collapseInlineTagWhitespace: true,
                 removeComments: true,
+                minifyCSS: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            template: 'html-withimg-loader!' + './src/project.html',
+            chunks: ['main', 'projectPage'],
+            filename: "project.html",
+            inject: 'body',
+            minify: {
+                collapseInlineTagWhitespace: true,
+                //removeComments: true,
                 minifyCSS: true
             }
         })

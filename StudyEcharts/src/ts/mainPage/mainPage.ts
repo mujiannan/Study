@@ -6,11 +6,24 @@ document.addEventListener('DOMContentLoaded', function () {
     let activitiesCalendar: ActivitiesCalendar = new ActivitiesCalendar();
     activitiesCalendar.render(activitiesCalendarContainer);
     let mainPage: MainPage = new MainPage();
+    document.addEventListener('visibilitychange',function(){
+        if(document.visibilityState=="visible"){
+            mainPage.startAnimation();
+        }else{
+            mainPage.suspendAnimation();
+        };
+    });
 });
 export class MainPage {
     private mainPageContainer: HTMLDivElement = <HTMLDivElement>document.getElementById("jmsy-bs-mainpage-container");
     private projectsMap:ProjectsMap;
     private projectCards: ProjectCard[] = [];
+    
+    private _animationPlaying : boolean=false;
+    public get animationPlaying() : boolean {
+        return this._animationPlaying;
+    }
+    
     private switchPageAnimation?: number;
     constructor() {
         //第一页地图
@@ -45,7 +58,26 @@ export class MainPage {
 
     }
     public startAnimation() {
-        this.loopSwitchPage();
+        if(this.animationPlaying){
+            return;
+        };
+        try{
+            this.loopSwitchPage();
+        }catch{
+            console.debug('mainpage animation start failed');
+        };
+        this._animationPlaying=true;
+    }
+    public suspendAnimation(){
+        if(!this.animationPlaying){
+            return;
+        };
+        try{
+            this.stopSwitchPage();
+        }catch{
+            console.debug('mainpage animation stop failed');
+        };
+        this._animationPlaying=false;
     }
     //左右切换
     private scrollHorizontal(step: number, internal: number) {
