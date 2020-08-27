@@ -26,7 +26,7 @@ class ProjectPage{
             let button=this.menuButtons[i];
             let buttons=this.menuButtons;
             let pages=this.subPages;
-            this.menuButtons[i].addEventListener("mouseover",function(){
+            this.menuButtons[i].addEventListener("mouseenter",function(){
                 this.style.backgroundSize="100%";
             });
             this.menuButtons[i].addEventListener("mouseleave",function(){
@@ -35,12 +35,23 @@ class ProjectPage{
                 };
             });
             this.menuButtons[i].addEventListener("click",()=>{
+                //先取消所有按钮背景
                 for(let k=0;k<buttons.length;k++){
                     buttons[k].style.backgroundSize="0%";
                     buttons[k].setAttribute('data','');
                 };
+                //再重新设置选中按钮的背景
                 button.setAttribute('data','selected');
                 button.style.backgroundSize="100%";
+                //处理下方的页面
+                for(let k=0;k<pages.length;k++){
+                    let page=pages[k]
+                    if(page.id.search(button.id)==-1){
+                        page.style.display="none";
+                    }else{
+                        page.style.display="block";
+                    };
+                };
             });
         }
     }
