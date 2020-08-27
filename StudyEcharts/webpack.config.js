@@ -72,7 +72,12 @@ module.exports = {
             template: 'html-withimg-loader!' + './src/index.html',
             chunks: ['main', 'mainPage', 'oldjs'],
             filename: "index.html",
-            inject: 'body'
+            inject: 'body',
+            minify: {
+                collapseInlineTagWhitespace: true,
+                removeComments: true,
+                minifyCSS: true
+            }
         })
     ]
 }
