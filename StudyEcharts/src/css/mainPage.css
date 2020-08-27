@@ -1,0 +1,44 @@
+#mainpage-page1-decoration-line {
+    margin: 0.1vh 20px 0px;
+    width: 60%;
+    height: 0.2vh;
+    background-image: linear-gradient(to right, #0eb5dd00, #0eb5dd35, #0eb5dd55, #0eb5ddaa, #216eff55, #216eff35, #216eff00);
+}
+
+body {
+    margin: 0px;
+    background-image: url(../img/background02.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+#title-container {
+    text-align: center;
+    height: 8vh;
+    margin: 0px;
+    vertical-align: middle;
+    position: fixed;
+    width: 100%;
+}
+
+#title {
+    font-size: 2.2rem;
+    color: snow;
+    position: relative;
+    transform: translateY(1.5vh);
+}
+
+div.jmsy-bs-mainpage-content-container {
+    margin: 8vh 0px 0px;
+    border-radius: 0%;
+    font-size: 0px;
+    display: inline-block;
+    position: absolute;
+    height: 90vh;
+    width: 100vw;
+}
+
+#page2-content-container {
+    margin-left: 100vw;
+}

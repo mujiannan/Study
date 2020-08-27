@@ -100,8 +100,7 @@ export class ProjectsMap {
         this.mapChart.off("click");
         this.mapChart.on("click",function(param:any){
             if(param.componentType&&param.componentType=="series"&&param.data&&param.data.name){
-                console.debug(param);
-                window.location.href="http://www.baidu.com";
+                window.location.href="./project.html?projectName="+param.data.name;
             };
         });
     }
@@ -116,7 +115,6 @@ export class ProjectsMap {
             { projectName: '上海北外滩购物中心', value: randomValue(), longtitude: 121.48, latitude: 31.22 },
             { projectName: '张家港览秀城', value: randomValue(), longtitude: 120.555821, latitude: 31.875428 },
             { projectName: '杭州金茂汇', value: randomValue(), longtitude: 120.19, latitude: 30.26 }
-
         ];
         return data;
     }

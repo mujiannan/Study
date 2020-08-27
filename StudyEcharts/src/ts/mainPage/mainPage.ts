@@ -1,6 +1,7 @@
 import { ProjectCard, IProjectCardData } from './projectCard';
 import { ActivitiesCalendar } from './activitiesCalendar';
 import { ProjectsMap,IProjectMapData } from './projectsMap';
+import '../../css/mainPage.css';
 document.addEventListener('DOMContentLoaded', function () {
     let activitiesCalendarContainer: HTMLDivElement = <HTMLDivElement>document.getElementById('jmsy-bs-mainpage-activitiescalendar');
     let activitiesCalendar: ActivitiesCalendar = new ActivitiesCalendar();

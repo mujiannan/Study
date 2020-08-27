@@ -7,11 +7,13 @@ body {
     font-size: 1.3vh;
 }
 
-#jmsy-mainpage-page1-decoration-line {
-    margin: 0.1vh 20px 0px;
-    width: 60%;
-    height: 0.2vh;
-    background-image: linear-gradient(to right, #0eb5dd00, #0eb5dd35, #0eb5dd55, #0eb5ddaa, #216eff55, #216eff35, #216eff00);
+div.jmsy-bs-page-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    background-attachment: fixed;
+    position: absolute;
+    overflow: hidden;
 }
 
 div.jmsy-bs-background-cylinder01 {
@@ -29,42 +31,7 @@ div.echarts-container {
     height: 100%;
     width: 100%;
     position: absolute;
-    font-size: 1.3vh;
-}
-
-#jmsy-bs-mainpage-body {
-    margin: 0px;
-    background-image: url(../img/background02.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-}
-
-#jmsy-bs-mainpage-container {
-    width: 100vw;
-    height: 100vh;
-    margin: 0px;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    background-color: rgba(10, 90, 255, 0.05);
-    position: absolute;
-    overflow: hidden;
-}
-
-.jmsy-bs-title-container {
-    text-align: center;
-    height: 8vh;
-    margin: 0px;
-    vertical-align: middle;
-    position: fixed;
-    width: 100%;
-}
-
-p.jmsy-bs-title {
-    font-size: 2.2rem;
-    color: snow;
-    position: relative;
-    transform: translateY(20px);
+    font-size: 1.3rem;
 }
 
 .jmsy-bs-mainpage-content-container {

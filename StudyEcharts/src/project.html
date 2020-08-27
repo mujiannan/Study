@@ -2,13 +2,36 @@
 <html>
 
 <head>
-    <title>
-        项目详情
-    </title>
+    <meta charset="utf-8">
+    <title>项目详情</title>
 </head>
 
 <body>
-
+    <div id="page-container" class='jmsy-bs-page-container'>
+        <!-- 标题与导航 -->
+        <div id="nav-container">
+            <p id='body-title'></p>
+            <div id="menu-container">
+                <button id="project-info" class="menu-item">项目信息</button>
+                <button id="balance-info" class="menu-item">收支情况</button>
+                <button id="operating-info" class="menu-item">经营情况</button>
+                <button id="vips-info" class="menu-item">会员情况</button>
+            </div>
+            <a href="/"><img src="img/return.png" style="display: inline-block;position: absolute;top:2vh;right:2vw;" /></a>
+        </div>
+        <!-- 主体1，项目信息 -->
+        <div id="project-info-content-container" class="jmsy-bs-projectpage-content-container">
+        </div>
+        <!-- 主体2，收支情况 -->
+        <div id="balance-info-content-container" class="jmsy-bs-projectpage-content-container">
+        </div>
+        <!-- 主体3，经营情况 -->
+        <div id="operating-info-content-container" class="jmsy-bs-projectpage-content-container">
+        </div>
+        <!-- 主体4，会员情况 -->
+        <div id="vips-info-content-container" class="jmsy-bs-projectpage-content-container">
+        </div>
+    </div>
 </body>
 
 </html>

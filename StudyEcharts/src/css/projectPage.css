@@ -1,0 +1,59 @@
+body {
+    margin: 0px;
+    background-image: url(../img/background03.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+#nav-container {
+    text-align: left;
+    height: 10vh;
+    margin: 0px;
+    vertical-align: middle;
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+}
+
+#body-title {
+    font-size: 2.2rem;
+    color: snow;
+    position: relative;
+    left: 2vw;
+}
+
+div#menu-container {
+    position: absolute;
+    left: 15vw;
+    top: 4vh;
+    right: 10vw;
+    height: 4vh;
+    vertical-align: bottom;
+}
+
+button.menu-item {
+    font-size: 1.6rem;
+    display: inline-block;
+    position: relative;
+    color: snow;
+    text-align: center;
+    margin: 0px 0.8vw;
+    background-size: 100%;
+    outline: none;
+    font-weight: bold;
+    border-width: 0px;
+    background-color: #00000000;
+    background-image: linear-gradient(to bottom, rgba(1, 4, 19, 0.3), rgba(17, 56, 140, 0.8));
+    padding: 0.5vh;
+}
+
+div.jmsy-bs-projectpage-content-container {
+    margin: 10vh 0px 0px;
+    border-radius: 0%;
+    font-size: 0px;
+    position: absolute;
+    height: 90vh;
+    width: 100vw;
+    display: none;
+}
