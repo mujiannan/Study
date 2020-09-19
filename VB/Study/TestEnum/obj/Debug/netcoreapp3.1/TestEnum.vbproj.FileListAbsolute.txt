@@ -1,0 +1,13 @@
+D:\Repos\Study\VB\Study\TestEnum\bin\Debug\netcoreapp3.1\TestEnum.exe
+D:\Repos\Study\VB\Study\TestEnum\bin\Debug\netcoreapp3.1\TestEnum.deps.json
+D:\Repos\Study\VB\Study\TestEnum\bin\Debug\netcoreapp3.1\TestEnum.runtimeconfig.json
+D:\Repos\Study\VB\Study\TestEnum\bin\Debug\netcoreapp3.1\TestEnum.runtimeconfig.dev.json
+D:\Repos\Study\VB\Study\TestEnum\bin\Debug\netcoreapp3.1\TestEnum.dll
+D:\Repos\Study\VB\Study\TestEnum\bin\Debug\netcoreapp3.1\TestEnum.pdb
+D:\Repos\Study\VB\Study\TestEnum\obj\Debug\netcoreapp3.1\TestEnum.vbprojAssemblyReference.cache
+D:\Repos\Study\VB\Study\TestEnum\obj\Debug\netcoreapp3.1\TestEnum.AssemblyInfoInputs.cache
+D:\Repos\Study\VB\Study\TestEnum\obj\Debug\netcoreapp3.1\TestEnum.AssemblyInfo.vb
+D:\Repos\Study\VB\Study\TestEnum\obj\Debug\netcoreapp3.1\TestEnum.vbproj.CoreCompileInputs.cache
+D:\Repos\Study\VB\Study\TestEnum\obj\Debug\netcoreapp3.1\TestEnum.dll
+D:\Repos\Study\VB\Study\TestEnum\obj\Debug\netcoreapp3.1\TestEnum.pdb
+D:\Repos\Study\VB\Study\TestEnum\obj\Debug\netcoreapp3.1\TestEnum.genruntimeconfig.cache
