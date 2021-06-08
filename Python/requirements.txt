@@ -25,7 +25,7 @@ mysql-connector-python==8.0.17
 numpy==1.17.4
 openpyxl==3.0.3
 pandas==0.25.3
-Pillow==7.1.2
+Pillow==8.2.0
 protobuf==3.11.3
 pylint==2.4.4
 pymssql==2.1.4
